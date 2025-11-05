@@ -1,0 +1,89 @@
+/* src/components/Skills.css */
+
+/* Impor CSS dasar dari reactflow */
+@import 'reactflow/dist/style.css';
+
+/* Wadah untuk kanvas 'flow' */
+.skills-flow-wrapper {
+    width: 100%;
+    /* Beri ketinggian yang pas */
+    height: 700px; 
+    max-width: 1200px; /* Samakan dengan layout lain */
+    margin: 0 auto;
+}
+
+/* --- Node Kustom (Ikon + Nama) --- */
+.rf-skill-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Hilangkan style default reactflow */
+    border: none;
+    background: transparent;
+    padding: 0;
+    width: 120px; /* Beri ruang agar teks tidak mepet */
+}
+
+.rf-skill-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.4));
+}
+
+.rf-skill-label {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* --- Node Pusat (Microchip) --- */
+.rf-center-node {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column; /* Susun ikon di atas teks */
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #222;
+    box-shadow: 0 0 15px rgba(0,255,0,0.4), 0 0 30px rgba(0,255,0,0.2) inset;
+    border: 1px solid var(--primary-color);
+    color: white;
+}
+.rf-center-node img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 5px;
+    filter: drop-shadow(0 0 5px rgba(0,255,0,0.8));
+}
+.rf-center-node span {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+
+/* --- Garis (Edge) Animasi "Elektronika" --- */
+.react-flow__edge-path {
+    /* Garis tipis dan bercahaya */
+    stroke-width: 1.5px;
+    stroke: var(--primary-color);
+    filter: drop-shadow(0 0 4px var(--primary-color));
+}
+/* Ini adalah animasi "arus bolak-balik" yang Anda minta */
+.react-flow__edge.animated .react-flow__edge-path {
+    stroke-dasharray: 7 7; /* Jarak garis putus-putus */
+    /* Animasikan dari 0 ke -14 (panjang 1 siklus) dan KEMBALI lagi */
+    animation: flow-reverse 1.5s linear infinite alternate;
+}
+
+@keyframes flow-reverse {
+    from {
+        stroke-dashoffset: 0;
+    }
+    to {
+        stroke-dashoffset: -14;
+    }
+}
