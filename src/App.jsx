@@ -8,6 +8,7 @@ import Header from './components/Header';
 import About from './components/About';
 import Skills from './components/Skills';
 import Section from './components/Section'; // <- Pastikan ini diimpor
+import Achievements from './components/Achievements';
 import Footer from './components/Footer'; // <- BARU
 import ScrollTopButton from './components/ScrollTopButton'; // <- BARU
 
@@ -64,23 +65,17 @@ function App() {
         
         
         
-        {/* === INI DIA SEMUA SECTION ANDA === */}
+          {/* === INI DIA SEMUA SECTION ANDA === */}
         <Skills id="skills" texts={currentTexts} />
-        <Section 
-          id="achievements"
-          title={currentTexts.achievementsTitle}
-          description={currentTexts.achievementsDesc}
-          imageUrl="https://via.placeholder.com/600x400"
-          bgUrl="https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?fit=crop&w=1920&q=80"
-          texts={currentTexts}
-        />
+       {/* INI PENGGANTINYA */}
+<Achievements texts={currentTexts} />
         
         <Section 
           id="projects"
           title={currentTexts.projectsTitle}
           description={currentTexts.projectsDesc}
           imageUrl="https://via.placeholder.com/600x400"
-          bgUrl="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?fit=crop&w=1920&q=80"
+          bgUrl="https://assets.skyfilabs.com/images/blog/mechanicalminiproject.webp"
           reverse={true} // <-- Ini untuk layout terbalik
           texts={currentTexts}
         />
@@ -90,7 +85,7 @@ function App() {
           title={currentTexts.internshipsTitle}
           description={currentTexts.internshipsDesc}
           imageUrl="https://via.placeholder.com/600x400"
-          bgUrl="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?fit=crop&w=1920&q=80"
+          bgUrl="https://assets.skyfilabs.com/images/blog/electronics-mini-project-feasibility-min.webp"
           texts={currentTexts}
         />
         
@@ -99,7 +94,7 @@ function App() {
           title={currentTexts.educationTitle}
           description={currentTexts.educationDesc}
           imageUrl="https://via.placeholder.com/600x400"
-          bgUrl="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?fit=crop&w=1920&q=80"
+          bgUrl="https://www.emetechnologies.com/blog/civil-engineering/images/nx0.jpg"
           reverse={true} // <-- Layout terbalik
           texts={currentTexts}
         />
@@ -109,10 +104,9 @@ function App() {
           title={currentTexts.organizationsTitle}
           description={currentTexts.organizationsDesc}
           imageUrl="https://via.placeholder.com/600x400"
-          bgUrl="https://images.unsplash.com/photo-1511632765486-a01980e01a18?fit=crop&w=1920&q=80"
+          bgUrl="https://mesin.polsri.ac.id/wp-content/uploads/2022/11/WhatsApp-Image-2022-11-23-at-11.14.30-1-768x576.jpeg"
           texts={currentTexts}
         />
-
       </main>
 
       {/* === BAGIAN PENUTUP (SELESAI) === */}
