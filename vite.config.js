@@ -6,5 +6,5 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   // HAPUS baris 'assetsInclude: ['**/*.glb'],' DARI SINI
-  base: '//portfolio-react/',
+  base: './portfolio-react/',
 })
