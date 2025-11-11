@@ -31,7 +31,7 @@ const ProjectDetail = ({ texts }) => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="order-1 lg:order-1 w-full mb-16 pb-12 lg:mb-0 lg:pb-0" /* Increased mb for mobile spacing */
+            className="order-1 lg:order-1 w-full pd-model-container"
           >
             <div className="pd-surface pd-aspect pd-sticky">
                 <div className="pd-aspect-inner">
@@ -57,7 +57,7 @@ const ProjectDetail = ({ texts }) => {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="order-2 lg:order-2 w-full space-y-6 mt-16 pt-16 lg:mt-0 lg:pt-0" /* Increased mt and pt for mobile spacing */
+            className="order-2 lg:order-2 w-full space-y-6 pd-text-container"
           >
             {/* Title */}
             <div>

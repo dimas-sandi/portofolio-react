@@ -130,6 +130,12 @@
   transition-delay: 0s, 0.1s; /* Opacity delay sedikit */
 }
 
+@media (max-width: 768px) {
+  .menu-item-title {
+    font-size: 1.4rem; /* Smaller font size for mobile */
+  }
+}
+
 
 /* === (BARU!) Wrapper Marquee (Tampilkan saat hover) === */
 .marquee-wrapper {
