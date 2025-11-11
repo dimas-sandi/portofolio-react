@@ -1,6 +1,6 @@
 // src/App.jsx
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { translations } from './translations';
 import Header from './components/Header';
@@ -9,11 +9,15 @@ import Skills from './components/Skills';
 import Achievements from './components/Achievements';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
-import ProjectDetail from './components/ProjectDetail';
-import AllProjects from './components/AllProjects';
+// import ProjectDetail from './components/ProjectDetail'; // Lazy loaded
+// import AllProjects from './components/AllProjects';     // Lazy loaded
 import Footer from './components/Footer';
 import ScrollTopButton from './components/ScrollTopButton';
 // import LiquidEther from './components/LiquidEther/LiquidEther';
+
+// Lazy load components
+const ProjectDetail = lazy(() => import('./components/ProjectDetail'));
+const AllProjects = lazy(() => import('./components/AllProjects'));
 
 function AppContent() {
   const location = useLocation();
@@ -165,14 +169,18 @@ function AppContent() {
             </main>
           } />
           <Route path="/project/:id" element={
-            <div className="relative z-[100] project-detail-page min-h-full bg-gradient-to-br from-gray-900 via-gray-800 to-black">
-              <ProjectDetail texts={currentTexts} currentLang={lang} />
-            </div>
+            <Suspense fallback={<div>Loading Project...</div>}>
+              <div className="relative z-[100] project-detail-page min-h-full bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+                <ProjectDetail texts={currentTexts} currentLang={lang} />
+              </div>
+            </Suspense>
           } />
           <Route path="/all-projects" element={
-            <div className="relative z-[100] all-projects-page min-h-full bg-gradient-to-br from-gray-900 via-gray-800 to-black">
-              <AllProjects texts={currentTexts} />
-            </div>
+            <Suspense fallback={<div>Loading All Projects...</div>}>
+              <div className="relative z-[100] all-projects-page min-h-full bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+                <AllProjects texts={currentTexts} />
+              </div>
+            </Suspense>
           } />
         </Routes>
       </div>
