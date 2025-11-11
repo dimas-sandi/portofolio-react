@@ -31,7 +31,7 @@ const ProjectDetail = ({ texts }) => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="order-1 lg:order-1 w-full pd-model-container"
+            className="order-2 lg:order-1 w-full pd-model-container"
           >
             <div className="pd-surface pd-aspect pd-sticky">
                 <div className="pd-aspect-inner">
@@ -57,7 +57,7 @@ const ProjectDetail = ({ texts }) => {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="order-2 lg:order-2 w-full space-y-6 pd-text-container"
+            className="order-1 lg:order-2 w-full space-y-6 pd-text-container"
           >
             {/* Title */}
             <div>
@@ -74,6 +74,16 @@ const ProjectDetail = ({ texts }) => {
               </p>
             </div>
           </motion.div>
+        </div>
+        {/* Scroll hint for mobile */}
+        <div className="pd-scroll-hint lg:hidden flex justify-center mt-8">
+            <button 
+                onClick={() => document.querySelector('.pd-model-container').scrollIntoView({ behavior: 'smooth' })}
+                className="flex items-center space-x-2 text-white text-sm animate-bounce"
+            >
+                <span>Scroll to 3D Model</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+            </button>
         </div>
       </div>
     </div>

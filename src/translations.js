@@ -4,7 +4,7 @@ export const translations = {
   "id": {
     "navSkills": "Keahlian",
     "skillsTitle": "Keahlian Teknis",
-    "skillsDesc": "Daftar teknologi dan perangkat lunak yang aku kuasai.",
+    "skillsDesc": "Daftar teknologi dan perangkat lunak yang saya kuasai.",
     "navAbout": "Tentang",
     "navAchievements": "Prestasi",
     "navProjects": "Projects",
@@ -14,7 +14,7 @@ export const translations = {
     "heroTitle": "DIMAS SANDI WIRANATA",
     "heroSubtitle": "Mechanical Engineer",
     "aboutMeText": `
-    Aku adalah lulusan Diploma IV Politeknik Negeri Sriwijaya, jurusan Teknik Mesin, aku suka mendalami rekayasa desain dan permesinan CNC, dengan keahlian kuat dalam desain CAD dan permesinan. Berkemampuan dalam menciptakan, memodelkan, dan mengoptimalkan komponen dan sistem mekanis menggunakan berbagai perangkat lunak teknik.`,
+    Saya adalah lulusan Diploma IV Teknik Mesin dari Politeknik Negeri Sriwijaya dengan minat yang kuat pada rekayasa desain, sistem otomasi, dan teknologi manufaktur modern. Saya memiliki keahlian dalam perancangan dan pemodelan komponen mekanis menggunakan perangkat lunak CAD, serta analisis performa dan optimalisasi sistem teknik secara menyeluruh. Selain itu, saya berpengalaman dalam penerapan teknologi berbasis mikrokontroler dan sistem kontrol elektronik untuk mendukung proses otomasi, pengendalian gerak, dan integrasi sistem mekanis. Bagi saya, rekayasa bukan hanya tentang menciptakan bentuk fisik, tetapi juga tentang menghadirkan solusi yang efisien, presisi, dan inovatif melalui kolaborasi antara desain, mekanika, elektronika, dan pemrograman. Dengan semangat belajar dan ketelitian yang tinggi, saya berkomitmen untuk terus mengembangkan kemampuan dalam menghadapi tantangan teknis di bidang desain, otomasi, dan pengembangan teknologi masa depan.`,
     "achievementsTitle": "PRESTASI",
     "achievementsDesc": "Beberapa pencapaian dan pengakuan di bidang keahlian saya.",
     "achievementsList": [
@@ -25,7 +25,7 @@ export const translations = {
         "marqueeText": "LKS 2021",
         "thumbnailImage": "images/thblks2021.svg",
         "details": `
-          Aku meraih Juara 1 dalam Lomba Kompetensi Siswa (LKS) bidang Sistem Otomasi mesin perkakas CNC Milling tingkat provinsi Sumatera Selatan pada tahun 2021.
+          Saya meraih Juara 1 dalam Lomba Kompetensi Siswa (LKS) bidang Sistem Otomasi mesin perkakas CNC Milling tingkat provinsi Sumatera Selatan pada tahun 2021.
           Lomba Kompetensi Siswa (LKS) SMK 2021 bidang CNC Milling bertujuan mengasah kompetensi siswa SMK agar siap kerja di industri. Kompetensi yang diuji meliputi kemampuan membaca gambar teknik, mengatur tool-offset dan work-offset, memanipulasi kondisi pemotongan, serta mengoperasikan mesin CNC Milling 3-axis. Selain itu, peserta harus mampu menggunakan software CAD/CAM dan memastikan hasil kerja sesuai dengan toleransi dimensi dan kualitas yang ditentukan, serta menerapkan K3 dan kontrol mutu. Lomba ini dilaksanakan secara offline di SMKN 4 Palembang, dengan soal yang dikirim sebelum lomba dan produk yang dikirim untuk penilaian. Penilaian mencakup aspek pemrograman, setup mesin, operasi, hasil kerja, dan penerapan K3. Lomba ini juga menguji kemampuan siswa untuk menerapkan keterampilan teknis di dunia industri nyata.
         `,
         
@@ -33,7 +33,7 @@ export const translations = {
         "documentationImages": [
           {
             "url": "images/Dokumentasi/1lks2021.jpg",
-            "desc": "Dokumentasi LKS 2021 - Foto ini diambil setelah pengumuman juara lomba, disini aku sangat bangga pada diriku untuk pertama kalinya. "
+            "desc": "Dokumentasi LKS 2021 - Foto ini diambil setelah pengumuman juara lomba, disini saya sangat bangga pada diri saya untuk pertama kalinya. "
           },
           {
             "url": "images/Dokumentasi/2lks2021.jpg",
@@ -41,7 +41,7 @@ export const translations = {
           },
           {
             "url": "images/Dokumentasi/3lks2021.jpg",
-            "desc": "Dokumentasi LKS 2021 - Kalau ini aku gatau mau bilang apa, akhirnya aku mencapai target waktu untuk mengerjakan soal lomba saat latihan."
+            "desc": "Dokumentasi LKS 2021 - Kalau ini saya gatau mau bilang apa, akhirnya saya mencapai target waktu untuk mengerjakan soal lomba saat latihan."
           },
           {
             "url": "images/Dokumentasi/4lks2021.jpg",
@@ -56,7 +56,7 @@ export const translations = {
         "marqueeText": "LKS NASIONAL",
         "thumbnailImage": "images/thblksn.svg",
         "details": `
-          Aku Menerima Medallion of Excellence (harapan 3) di LKS tingkat Nasional 2021.
+          Saya Menerima Medallion of Excellence (harapan 3) di LKS tingkat Nasional 2021.
           LKS Nasional 2021 untuk CNC Milling adalah ajang talenta siswa SMK tingkat nasional yang diselenggarakan oleh Kemendikbud untuk menguji kemampuan pemrograman, penyetelan, dan proses pemesinan dengan mesin CNC Milling, dengan salah satu alumni SMK Wisudha Karya Kudus berhasil meraih medali emas. 
 Detail LKS Nasional 2021 Bidang CNC Milling:
 Tujuan: Mengukur dan menguji kompetensi siswa dalam menggunakan mesin CNC Milling untuk membentuk logam dan material padat lainnya.
@@ -67,19 +67,19 @@ Keluaran: Menghasilkan karya produk presisi tinggi sesuai dengan spesifikasi yan
         `,
                 "documentationImages": [  {
                     "url": "images/Dokumentasi/1lksn.jpg",
-                    "desc": "Dokumentasi LKSN 2021 - Ini adalah mesin yang ku operasikan saat latihan dan lomba. "
+                    "desc": "Dokumentasi LKSN 2021 - Ini adalah mesin yang saya operasikan saat latihan dan lomba. "
                   },
           {
             "url": "images/Dokumentasi/2lksn.jpg",
-            "desc": "Dokumentasi LKSN 2021 - Ini kondisi bengkel CNC SMKN2 tempat Aku mengerjakan soal lomba."
+            "desc": "Dokumentasi LKSN 2021 - Ini kondisi bengkel CNC SMKN2 tempat Saya mengerjakan soal lomba."
           },
           {
             "url": "images/Dokumentasi/3lksn.jpg",
-            "desc": "Dokumentasi LKSN 2021 - Foto ini saat aku mengerjakan soal simulasi sebelum lomba dimulai."
+            "desc": "Dokumentasi LKSN 2021 - Foto ini saat saya mengerjakan soal simulasi sebelum lomba dimulai."
           },
           {
             "url": "images/Dokumentasi/4lksn.jpg",
-            "desc": "Dokumentasi LKSN 2021 - Ini adalah sebagian hasil yang sudah aku kerjakan saat latihan dan lomba."
+            "desc": "Dokumentasi LKSN 2021 - Ini adalah sebagian hasil yang sudah saya kerjakan saat latihan dan lomba."
           },
           {
             "url": "images/Dokumentasi/5lksn.jpg",
@@ -125,14 +125,26 @@ Keluaran: Menghasilkan karya produk presisi tinggi sesuai dengan spesifikasi yan
         "thumbnailImage": "images/thblkncc2024.svg",
         "details": `
           Meraih Juara 2 dalam Lomba CAD-CAM Nasional tingkat Master di Polman Bangka Belitung.
-          Tantangan di tingkat Master ini meliputi... (Jelaskan apa yang Anda buat).
+          Kompetisi CAD-CAM Nasional (NCC) 2024 merupakan ajang penting bagi mahasiswa perguruan tinggi Indonesia yang diselenggarakan oleh Politeknik Manufaktur Bangka Belitung dibawah Bakorma, dengan menampilkan kategori yang diperluas termasuk 2D Drafting, Modeling, CAD Indonesia, dan CAD-CAM Milling.
         `,
         
         // === FORMAT DIPERBARUI DI SINI ===
         "documentationImages": [
           {
-            "url": "https://via.placeholder.com/800x600/ddd/000?text=Dokumentasi+Babel",
-            "desc": "Deskripsi untuk dokumentasi Babel (Ganti ini)"
+            "url": "images/Dokumentasi/1ncc2024.png",
+            "desc": "Dokumentasi NCC 2024 - Ini sesaat sebelum lomba babak penyisihan secara online akan dimulai. "
+          },
+          {
+           "url": "images/Dokumentasi/2ncc2024.png",
+            "desc": "Dokumentasi NCC 2023 - Ini foto bareng juri setelah pengumuman juara lomba. "
+          },
+          {
+           "url": "images/Dokumentasi/3ncc2024.png",
+            "desc": "Dokumentasi NCC 2023 - Ini foto bareng delegasi polsri setelah pengumuman juara lomba. "
+          },
+           {
+           "url": "images/Dokumentasi/4ncc2024.png",
+            "desc": "Dokumentasi NCC 2023 - foto ini diambil dengan hati yang sangat senang dan bersyukur. "
           }
         ]
       }
@@ -267,13 +279,28 @@ Keluaran: Menghasilkan karya produk presisi tinggi sesuai dengan spesifikasi yan
         "source": "Politeknik Manufaktur Bangka Belitung - 2024",
         "marqueeText": "CAD-CAM 2024",
         "thumbnailImage": "images/thblkncc2024.svg",
-        "details": "Achieved 2nd place in the Master Level... (Add details here)",
+        "details": `
+          Meraih Juara 2 dalam Lomba CAD-CAM Nasional tingkat Master di Polman Bangka Belitung.
+          Kompetisi CAD-CAM Nasional (NCC) 2024 merupakan ajang penting bagi mahasiswa perguruan tinggi Indonesia yang diselenggarakan oleh Politeknik Manufaktur Bangka Belitung dibawah Bakorma, dengan menampilkan kategori yang diperluas termasuk 2D Drafting, Modeling, CAD Indonesia, dan CAD-CAM Milling.
+        `,
         
         // === FORMAT DIPERBARUI DI SINI ===
         "documentationImages": [
           {
-            "url": "https://via.placeholder.com/800x600/ddd/000?text=Babel+Documentation",
-            "desc": "Description for Babel documentation (Change this)"
+            "url": "images/Dokumentasi/1ncc2024.png",
+            "desc": "Dokumentasi NCC 2024 - Ini sesaat sebelum lomba babak penyisihan secara online akan dimulai. "
+          },
+          {
+           "url": "images/Dokumentasi/2ncc2024.png",
+            "desc": "Dokumentasi NCC 2023 - Ini foto bareng juri setelah pengumuman juara lomba. "
+          },
+          {
+           "url": "images/Dokumentasi/3ncc2024.png",
+            "desc": "Dokumentasi NCC 2023 - Ini foto bareng delegasi polsri setelah pengumuman juara lomba. "
+          },
+           {
+           "url": "images/Dokumentasi/4ncc2024.png",
+            "desc": "Dokumentasi NCC 2023 - foto ini diambil dengan hati yang sangat senang dan bersyukur. "
           }
         ]
       }
@@ -281,13 +308,13 @@ Keluaran: Menghasilkan karya produk presisi tinggi sesuai dengan spesifikasi yan
     // ===================================
 
     "projectsTitle": "Projects",
-    "projectsDesc": "Showcase your best projects...",
+    "projectsDesc": "Some projects I have worked on",
     "internshipsTitle": "Internship Experience",
-    "internshipsDesc": "Describe your internship...",
+    "internshipsDesc": "Describe your internship experience...",
     "educationTitle": "Education",
-    "educationDesc": "Details about your education...",
+    "educationDesc": "Details about your educational background...",
     "organizationsTitle": "Organizations",
-    "organizationsDesc": "Explain your involvement...",
+    "organizationsDesc": "Explain your involvement and roles...",
     "learnMore": "More",
     "navContact": "Contact",
     "contactTitle": "Contact Me",

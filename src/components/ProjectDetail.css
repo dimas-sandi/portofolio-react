@@ -65,15 +65,55 @@
 /* Mobile adjustments */
 @media (max-width: 1023px) {
   .pd-model-container {
-    margin-bottom: 4rem; /* Push text down from model */
+    margin-top: 2rem; /* Push model down from text */
+    margin-bottom: 0;
     padding-bottom: 0;
   }
   .pd-text-container {
-    margin-top: 2rem; /* Push text further down from model */
+    margin-top: 0;
     padding-top: 0;
+    margin-bottom: 2rem; /* Add space below text before model */
   }
   .pd-container {
     padding-top: 4rem; /* Adjust overall top padding for mobile */
+  }
+}
+
+/* Scroll hint styling */
+.pd-scroll-hint {
+  display: none; /* Hidden by default */
+}
+
+@media (max-width: 1023px) {
+  .pd-scroll-hint {
+    display: flex; /* Show on mobile */
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  .pd-scroll-hint button {
+    background: none;
+    border: none;
+    color: #cbd5e1; /* Light gray text */
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: bounce 1.5s infinite; /* Simple bounce animation */
+  }
+  .pd-scroll-hint button svg {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }
 

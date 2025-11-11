@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import ChromaGrid from './ChromaGrid';
 import { getPortfolioData } from '../portfolioData';
 
 const Projects = ({ texts }) => {
-  const projects = getPortfolioData(texts).filter(item => item.id !== 'projects'); // Exclude the generic projects entry
+  const allProjects = getPortfolioData(texts).filter(item => item.id !== 'projects'); // Exclude the generic projects entry
+  const [showAllProjects, setShowAllProjects] = useState(false);
+
+  const projectsToShow = showAllProjects ? allProjects : allProjects.slice(0, 6);
 
   return (
     <section id="projects" className="section relative z-10">
@@ -47,8 +50,25 @@ const Projects = ({ texts }) => {
           }}
           viewport={{ once: true }}
         >
-          <ChromaGrid items={projects} />
+          <ChromaGrid items={projectsToShow} />
         </motion.div>
+
+        {allProjects.length > 6 && !showAllProjects && (
+          <motion.div
+            className="flex justify-center mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <button
+              onClick={() => setShowAllProjects(true)}
+              className="px-8 py-3 bg-purple-600 text-white font-semibold rounded-full shadow-lg hover:bg-purple-700 transition-colors duration-300"
+            >
+              View More Projects
+            </button>
+          </motion.div>
+        )}
       </div>
     </section>
   );
