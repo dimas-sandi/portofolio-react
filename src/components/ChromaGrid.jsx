@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import LazyLoad from './LazyLoad'; // Import LazyLoad
 import './ChromaGrid.css';
 
 const ChromaGrid = ({ items }) => {
@@ -70,19 +71,21 @@ const ChromaGrid = ({ items }) => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               >
-                <motion.img
-                  src={item.imageUrl}
-                  alt={item.title}
-                  className="chroma-image"
-                  style={{
-                    filter: isHovered ? 'grayscale(0%)' : 'grayscale(100%)',
-                    transition: 'filter 0.3s ease',
-                  }}
-                  whileHover={{
-                    filter: 'grayscale(0%)',
-                    scale: 1.1
-                  }}
-                />
+                <LazyLoad placeholderHeight="250px"> {/* Wrap image with LazyLoad */}
+                  <motion.img
+                    src={item.imageUrl}
+                    alt={item.title}
+                    className="chroma-image"
+                    style={{
+                      filter: isHovered ? 'grayscale(0%)' : 'grayscale(100%)',
+                      transition: 'filter 0.3s ease',
+                    }}
+                    whileHover={{
+                      filter: 'grayscale(0%)',
+                      scale: 1.1
+                    }}
+                  />
+                </LazyLoad>
               </motion.div>
               <motion.div
                 className="chroma-content"

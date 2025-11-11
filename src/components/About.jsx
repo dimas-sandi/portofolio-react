@@ -37,7 +37,6 @@ const About = ({ texts }) => {
           <NormalTypingEffect 
             text={texts.aboutMeText.trim()} 
             speed={50} 
-            delay={1000} 
             className="about-text" 
           />
         </div>
