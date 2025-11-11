@@ -178,7 +178,7 @@ function AppContent() {
 
 function App() {
   return (
-    <Router basename="/portofolio-react/">
+    <Router>
       <AppContent />
     </Router>
   );

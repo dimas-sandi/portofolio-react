@@ -5,7 +5,7 @@ import path from 'path'
 // https://vitejs.dev/config/
 
 export default defineConfig({
-  base: '/portofolio-react/',
+  base: '/',
   plugins: [react()],
   // HAPUS baris 'assetsInclude: ['**/*.glb'],' DARI SINI
   resolve: {
