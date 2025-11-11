@@ -40,6 +40,8 @@ body {
     color: var(--primary-color);
     line-height: 1.6;
     overflow-x: hidden;
+    background: linear-gradient(to bottom, #000000, #1a0e2a);
+    min-height: 100vh;
 }
 
 a {
