@@ -33,12 +33,10 @@
 
 html {
     scroll-behavior: smooth;
-    background-color: transparent;
 }
 
 body {
     font-family: 'Urbanist', 'Raleway', sans-serif;
-    background-color: transparent;
     color: var(--primary-color);
     line-height: 1.6;
     overflow-x: hidden;
