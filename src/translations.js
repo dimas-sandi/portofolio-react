@@ -51,6 +51,9 @@ export const translations = {
       },
       {
         "id": 2,
+        "title": "Medallion of Excellence, LKS Nasional",
+        "source": "Lomba Kompetensi Siswa - 2021",
+        "marqueeText": "LKS NASIONAL",
         "thumbnailImage": "images/thblksn.svg",
         "details": `
           Aku Menerima Medallion of Excellence (harapan 3) di LKS tingkat Nasional 2021.
