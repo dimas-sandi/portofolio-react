@@ -33,8 +33,13 @@ const ProjectDetail = ({ texts }) => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="order-1 lg:order-1 w-full mb-16 pb-12 lg:mb-0 lg:pb-0" /* Increased mb for mobile spacing */
           >
-            <div className="pd-surface pd-aspect pd-sticky"> {/* Removed inline style */}
+            <div className="pd-surface pd-aspect pd-sticky">
                 <div className="pd-aspect-inner">
+                <React.Suspense fallback={
+                    <div className="flex items-center justify-center w-full h-full bg-gray-800 text-white text-lg font-semibold">
+                        Loading 3D Model...
+                    </div>
+                }>
                 {
                   (() => {
                     const base = import.meta.env.BASE_URL || '/';
@@ -42,6 +47,7 @@ const ProjectDetail = ({ texts }) => {
                     return <ModelViewer modelPath={fullModelUrl || `${base}project/cncmini.glb`} />;
                   })()
                 }
+                </React.Suspense>
               </div>
             </div>
           </motion.div>

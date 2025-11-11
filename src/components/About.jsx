@@ -12,20 +12,20 @@ const About = ({ texts }) => {
       <div className="section-content hero-layout">
         
         {/* 2. INI DIA PENGGANTINYA! */}
-        <div className="hero-image-container">
+        <div className="hero-image-container reveal animate-zoom-in delay-2">
           {/* Memanggil komponen 3D Anda */}
           <Lanyard />
         </div>
 
         <div className="hero-text-content">
           {/* ... (Semua kode h1, h2, social-links, tetap SAMA) ... */}
-          <h1 data-lang-key="heroTitle">
+          <h1 data-lang-key="heroTitle" className="reveal animate-fade-up">
             {texts.heroTitle}
           </h1>
-          <h2 data-lang-key="heroSubtitle">
+          <h2 data-lang-key="heroSubtitle" className="reveal animate-fade-up delay-1">
             {texts.heroSubtitle}
           </h2>
-          <div className="social-links">
+          <div className="social-links reveal animate-fade-up delay-2">
             <a href="mailto:dimasdimpi90@gmail.com" aria-label="Email"><Mail /></a>
             <a href="https://linkedin.com/in/dimas-sandi-wiranata-763322284/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin /></a>
             <a href="https://instagram.com/dmzsnd__/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram /></a>
@@ -37,7 +37,7 @@ const About = ({ texts }) => {
           <NormalTypingEffect 
             text={texts.aboutMeText.trim()} 
             speed={50} 
-            className="about-text" 
+            className="about-text reveal animate-fade-up delay-3" 
           />
         </div>
 
