@@ -12,7 +12,7 @@ import Contact from './components/Contact';
 import ProjectDetail from './components/ProjectDetail';
 import Footer from './components/Footer';
 import ScrollTopButton from './components/ScrollTopButton';
-import LiquidEther from './components/LiquidEther/LiquidEther';
+// import LiquidEther from './components/LiquidEther/LiquidEther';
 
 function AppContent() {
   const location = useLocation();
@@ -85,7 +85,7 @@ function AppContent() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <LiquidEther
+      {/* <LiquidEther
         mouseForce={20}
         cursorSize={100}
         isViscous={false}
@@ -112,7 +112,7 @@ function AppContent() {
           zIndex: -2,
           pointerEvents: 'none',
         }}
-      />
+      /> */}
       <>
         <style dangerouslySetInnerHTML={{
           __html: `
