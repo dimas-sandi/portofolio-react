@@ -18,16 +18,38 @@ import './Lanyard.css'; // Kita akan buat file ini
 extend({ MeshLineGeometry, MeshLineMaterial });
 
 export default function Lanyard({ position = [0, 0, 18], gravity = [0, -40, 0], fov = 15, transparent = true }) {
+  const [lanyardLoaded, setLanyardLoaded] = useState(false);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!lanyardLoaded) {
+      const interval = setInterval(() => {
+        setCount(prevCount => (prevCount < 100 ? prevCount + 1 : 100));
+      }, 20); // Adjust speed of count-up
+      return () => clearInterval(interval);
+    }
+  }, [lanyardLoaded]);
+
+  const handleLanyardLoaded = () => {
+    setLanyardLoaded(true);
+  };
+
   return (
     <div className="lanyard-wrapper">
+      {!lanyardLoaded && (
+        <div className="lanyard-loading-overlay">
+          <div className="lanyard-loading-text">Loading... {count}%</div>
+        </div>
+      )}
       <Canvas
         camera={{ position: position, fov: fov }}
         gl={{ alpha: transparent }}
         onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
+        style={{ visibility: lanyardLoaded ? 'visible' : 'hidden' }} // Hide canvas until loaded
       >
           <ambientLight intensity={Math.PI} />
           <Physics gravity={gravity} timeStep={1 / 60}>
-            <Band />
+            <Band onLoaded={handleLanyardLoaded} />
           </Physics>
           <Environment blur={0.75}>
             <Lightformer
@@ -64,7 +86,7 @@ export default function Lanyard({ position = [0, 0, 18], gravity = [0, -40, 0], 
   );
 }
 
-function Band({ maxSpeed = 50, minSpeed = 0 }) {
+function Band({ maxSpeed = 50, minSpeed = 0, onLoaded }) {
   const band = useRef(),
     fixed = useRef(),
     j1 = useRef(),
@@ -77,10 +99,19 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
     dir = new THREE.Vector3();
   const segmentProps = { type: 'dynamic', canSleep: true, colliders: false, angularDamping: 4, linearDamping: 4 };
 
+  const [, setLoaded] = useState(false);
+
   // --- INI BAGIAN PENTING ---
   // Kita memuat path string dari folder 'public/'
   const { nodes, materials } = useGLTF(cardPath);
   const texture = useTexture(lanyardPath);
+
+  useEffect(() => {
+    if (nodes && materials && texture) {
+      setLoaded(true);
+      if (onLoaded) onLoaded();
+    }
+  }, [nodes, materials, texture, onLoaded]);
   // -------------------------
 
   const [curve] = useState(
