@@ -37,9 +37,9 @@ export const getPortfolioData = (texts) => [
   {
     id: "project5",
     title: "KONVERSI MOTOR KONVENSIONAL >> LISTRIK",
-    description: "Description for Project 5. This is a placeholder project.",
-    imageUrl: "https://via.placeholder.com/800x600/ddd/000?text=Project+5",
-    modelUrl: "card.glb",
+    description: "Proyek konversi motor Yamaha Alpha 1988 menjadi motor listrik ini bertujuan untuk mengubah motor konvensional menjadi kendaraan listrik yang efisien dan ramah lingkungan. Dalam proyek ini, saya merancang rangka yang kokoh dan dudukan baterai yang aman untuk mendukung motor BLDC 2000 watt serta komponen kelistrikan lainnya. Desain rangka menggunakan bahan seperti plat baja dan aluminium untuk memberikan kekuatan yang cukup dalam menahan beban motor dan baterai. Dudukan baterai dirancang agar stabil dan seimbang, memastikan posisi baterai yang aman selama penggunaan. Selain itu, saya juga melakukan analisis menggunakan Finite Element Analysis (FEA) untuk mengevaluasi kekuatan struktur rangka dan dudukan baterai, memastikan desain dapat menahan beban dan tekanan saat beroperasi tanpa mengalami kegagalan. Dengan pendekatan ini, motor Yamaha Alpha dapat beralih ke sistem penggerak listrik yang lebih ramah lingkungan, efisien, dan memiliki performa yang handal.",
+    imageUrl: "project/mtr.jpg",
+    modelUrl: "project/mtr.glb",
   },
   {
     id: "project6",
