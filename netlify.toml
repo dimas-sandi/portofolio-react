@@ -1,0 +1,14 @@
+# netlify.toml
+
+[build]
+  # Perintah untuk build proyek Anda
+  command = "npm run build"
+  # Direktori output setelah build
+  publish = "dist"
+
+# Aturan redirect untuk Single Page Application (SPA)
+# Ini memastikan semua rute ditangani oleh React Router
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
