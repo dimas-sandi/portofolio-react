@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* src/style.css */
 
 /* --- KEYFRAME UNTUK BINTANG --- */
@@ -29,11 +33,12 @@
 
 html {
     scroll-behavior: smooth;
+    background-color: transparent;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: var(--background-color);
+    font-family: 'Urbanist', 'Raleway', sans-serif;
+    background-color: transparent;
     color: var(--primary-color);
     line-height: 1.6;
     overflow-x: hidden;
@@ -87,6 +92,15 @@ img, video {
     font-size: 1.2rem;
     font-weight: 700;
     letter-spacing: 1px;
+    display: flex; /* Make it a flex container */
+    align-items: center; /* Vertically align items */
+    gap: 0.5rem; /* Space between logo and text */
+}
+
+.logo-icon {
+    height: 30px;
+    width: 30px;
+    /* Add any other styling for the icon itself if needed */
 }
 
 .desktop-nav {
@@ -177,16 +191,7 @@ img, video {
     background-attachment: fixed;
 }
 
-.section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--overlay-color);
-    z-index: 1;
-}
+
 
 .section-content,
 .section-content-split {
@@ -203,50 +208,10 @@ img, video {
 
 #about {
     background-image: none !important;
-    background-color: var(--background-color);
     position: relative; /* <-- TAMBAHKAN INI */
     overflow: hidden; /* <-- TAMBAHKAN INI */
 }
-/* GANTI #about::before YANG LAMA DENGAN INI */
-#about::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2000px;
-    z-index: 0; /* Taruh di belakang konten */
-    opacity: 0.5;
-    background-image: 
-        radial-gradient(1px 1px at 20px 30px, #fff, #fff0),
-        radial-gradient(1px 1px at 40px 70px, #fff, #fff0),
-        radial-gradient(1px 1px at 50px 160px, #fff, #fff0),
-        radial-gradient(1px 1px at 90px 40px, #fff, #fff0),
-        radial-gradient(1px 1px at 130px 80px, #fff, #fff0),
-        radial-gradient(1px 1px at 160px 120px, #fff, #fff0);
-    background-repeat: repeat;
-    background-size: 200px 200px;
-    animation: move-stars 50s linear infinite;
-}
 
-/* TAMBAHKAN INI */
-#about::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2000px;
-    z-index: 0; /* Taruh di belakang konten */
-    opacity: 0.3;
-    background-image: 
-        radial-gradient(2px 2px at 30px 50px, #fff, #fff0),
-        radial-gradient(2px 2px at 100px 150px, #fff, #fff0),
-        radial-gradient(2px 2px at 180px 80px, #fff, #fff0);
-    background-repeat: repeat;
-    background-size: 200px 200px;
-    animation: move-stars 100s linear infinite;
-}
 
 .hero-layout {
     /* ... (style hero-layout Anda) ... */
@@ -277,23 +242,22 @@ img, video {
 .hero-text-content .social-links,
 .hero-text-content .btn-learn-more {
     text-align: left;
-    margin-left: 0;
-    margin-right: auto;
 }
 
-#about h1 {
+.hero-text-content h1 {
     font-size: 2.5rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    text-align: center; /* Default to center for non-desktop */
 }
 #about h2 {
     font-size: 1.5rem;
     font-weight: 300;
     color: var(--secondary-color);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     text-transform: uppercase;
+    text-align: center; /* Default to center for non-desktop */
 }
 
 .hero-text-content .social-links {
@@ -355,12 +319,13 @@ img, video {
     font-size: 2rem;
     text-transform: uppercase;
     margin-bottom: 1rem;
+    text-align: center;
 }
 .section p {
     font-size: 1.1rem;
     color: var(--secondary-color);
     margin-bottom: 2rem;
-    max-width: 600px;
+    text-align: center;
 }
 
 /* Tombol "Learn More" ala SpaceX */
@@ -517,9 +482,11 @@ footer p {
 
     #about h1 {
         font-size: 3.5rem; /* Disesuaikan agar muat 1 baris */
+        text-align: left; /* Ensure left alignment on desktop */
     }
     #about h2 {
         font-size: 2rem;
+        text-align: left; /* Ensure left alignment on desktop */
     }
 
     .section-content-split {
@@ -597,44 +564,7 @@ footer p {
 /* (Pastikan .section-content sudah punya z-index: 2) */
 /* (Kita tidak perlu mengubah .section-content karena sudah benar) */
 
-.skills-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2000px;
-    z-index: 0; 
-    opacity: 0.5;
-    background-image: 
-        radial-gradient(1px 1px at 20px 30px, #fff, #fff0),
-        radial-gradient(1px 1px at 40px 70px, #fff, #fff0),
-        radial-gradient(1px 1px at 50px 160px, #fff, #fff0),
-        radial-gradient(1px 1px at 90px 40px, #fff, #fff0),
-        radial-gradient(1px 1px at 130px 80px, #fff, #fff0),
-        radial-gradient(1px 1px at 160px 120px, #fff, #fff0);
-    background-repeat: repeat;
-    background-size: 200px 200px;
-    animation: move-stars 50s linear infinite;
-}
 
-.skills-section::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2000px;
-    z-index: 0;
-    opacity: 0.3;
-    background-image: 
-        radial-gradient(2px 2px at 30px 50px, #fff, #fff0),
-        radial-gradient(2px 2px at 100px 150px, #fff, #fff0),
-        radial-gradient(2px 2px at 180px 80px, #fff, #fff0);
-    background-repeat: repeat;
-    background-size: 200px 200px;
-    animation: move-stars 100s linear infinite;
-}
 /* Keyframes untuk animasi scroll linear */
 @keyframes scroll-linear {
     from {
@@ -794,4 +724,77 @@ footer p {
     text-align: center;
     margin-left: auto;   /* <-- Ini akan memusatkan kotak 700px */
     margin-right: auto;  /* <-- Ini akan memusatkan kotak 700px */
+}
+
+/* New blurred container style */
+.blurred-container {
+    background-color: rgba(255, 255, 255, 0.05); /* Light transparent fill */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle stroke */
+    border-radius: 12px; /* Rounded corners */
+    backdrop-filter: blur(10px); /* Blurred effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    padding: 2rem; /* Internal spacing */
+    margin: 2rem auto; /* Center the container and add vertical margin */
+    max-width: 1200px; /* Limit width for better readability */
+}
+
+/* General Responsive Adjustments */
+@media (max-width: 1024px) {
+    .section {
+        padding: 4rem 1rem; /* Adjust padding for medium screens */
+    }
+    .section h2 {
+        font-size: 2.5rem;
+    }
+    .section p {
+        font-size: 1rem;
+    }
+    .blurred-container {
+        padding: 1.5rem;
+        margin: 1.5rem auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 3rem 0.5rem; /* Adjust padding for small screens */
+    }
+    .section h2 {
+        font-size: 2rem;
+    }
+    .section p {
+        font-size: 0.9rem;
+    }
+    .blurred-container {
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+    .hero-text-content h1 {
+        font-size: 2rem;
+    }
+    #about h2 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section h2 {
+        font-size: 1.8rem;
+    }
+    .hero-text-content h1 {
+        font-size: 1.5rem;
+    }
+    #about h2 {
+        font-size: 1rem;
+    }
+    .about-text {
+        font-size: 0.85rem;
+    }
+    .social-links a {
+        font-size: 1.2rem;
+    }
+    .btn-learn-more {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
 }

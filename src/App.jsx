@@ -1,24 +1,47 @@
 // src/App.jsx
 
 import React, { useState, useEffect } from 'react';
-import { translations } from './translations'; 
-
-// Impor semua komponen Anda
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { translations } from './translations';
 import Header from './components/Header';
 import About from './components/About';
 import Skills from './components/Skills';
-import Section from './components/Section'; // <- Pastikan ini diimpor
 import Achievements from './components/Achievements';
-import Footer from './components/Footer'; // <- BARU
-import ScrollTopButton from './components/ScrollTopButton'; // <- BARU
+import Projects from './components/Projects';
+import Contact from './components/Contact';
+import ProjectDetail from './components/ProjectDetail';
+import Footer from './components/Footer';
+import ScrollTopButton from './components/ScrollTopButton';
+import LiquidEther from './components/LiquidEther/LiquidEther';
 
-function App() {
-  // ... (semua state dan effect Anda tetap sama)
+function AppContent() {
+  const location = useLocation();
+  const isProjectDetail = location.pathname.startsWith('/project/');
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
+
+  useEffect(() => {
+    if (isProjectDetail) {
+      document.body.classList.add('project-detail-active');
+    } else {
+      document.body.classList.remove('project-detail-active');
+    }
+  }, [isProjectDetail]);
+
   const [lang, setLang] = useState(() => {
     const userLang = navigator.language || navigator.userLanguage;
     return userLang.startsWith('id') ? 'id' : 'en';
   });
   const currentTexts = translations[lang];
+
   const [isMobileNavOpen, setMobileNavOpen] = useState(false);
   const [isHeaderScrolled, setHeaderScrolled] = useState(false);
 
@@ -31,8 +54,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const revealElements = document.querySelectorAll('.reveal');
-    const revealOptions = { threshold: 0.15 };
     const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -40,79 +61,126 @@ function App() {
           observer.unobserve(entry.target);
         }
       });
-    }, revealOptions);
-    revealElements.forEach(el => revealObserver.observe(el));
-    return () => revealElements.forEach(el => revealObserver.unobserve(el));
-  }, [currentTexts]); // Jalankan ulang saat ganti bahasa
+    }, { threshold: 0.15 });
+
+    const setupRevealAnimations = () => {
+      const elements = document.querySelectorAll('.reveal:not(.active)');
+      elements.forEach(el => revealObserver.observe(el));
+    };
+
+    setupRevealAnimations(); // Initial run
+
+    // When a section becomes visible, re-run the setup to find new reveal elements
+    window.addEventListener('section-visible', setupRevealAnimations);
+
+    return () => {
+      window.removeEventListener('section-visible', setupRevealAnimations);
+      revealObserver.disconnect(); // Cleanup observer on unmount
+    };
+  }, [currentTexts, location]); // Rerun on language or location change
 
   if (!currentTexts) {
     return <div>Loading...</div>; 
   }
 
   return (
-    <>
-      <Header 
-        lang={lang} 
-        setLang={setLang} 
+    <div className="flex flex-col min-h-screen">
+      <LiquidEther
+        mouseForce={20}
+        cursorSize={100}
+        isViscous={false}
+        viscous={30}
+        iterationsViscous={32}
+        iterationsPoisson={32}
+        dt={0.02}
+        BFECC={false}
+        resolution={0.6}
+        isBounce={false}
+        colors={['#5227FF', '#FF9FFC', '#B19EEF']}
+        autoDemo={true}
+        autoSpeed={0.5}
+        autoIntensity={2.0}
+        takeoverDuration={0.0}
+        autoResumeDelay={0}
+        autoRampDuration={0.0}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: -2,
+          pointerEvents: 'none',
+        }}
+      />
+      <>
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            .project-detail-page,
+            .project-detail-page *,
+            .project-detail-page canvas,
+            .project-detail-page div,
+            .project-detail-page p,
+            .project-detail-page h1,
+            .project-detail-page h2,
+            .project-detail-page h3,
+            .project-detail-page h4,
+            .project-detail-page h5,
+            .project-detail-page h6 {
+              pointer-events: auto !important;
+              cursor: auto !important;
+            }
+            body.project-detail-active {
+              pointer-events: auto !important;
+            }
+            body.project-detail-active * {
+              pointer-events: auto !important;
+            }
+          `
+        }} />
+      </>
+      <Header
+        lang={lang}
+        setLang={setLang}
         texts={currentTexts}
         isScrolled={isHeaderScrolled}
         isMobileOpen={isMobileNavOpen}
         toggleMobile={setMobileNavOpen}
       />
 
-      <main>
-        <About texts={currentTexts} />
-        
-        
-        
-          {/* === INI DIA SEMUA SECTION ANDA === */}
-        <Skills id="skills" texts={currentTexts} />
-       {/* INI PENGGANTINYA */}
-<Achievements texts={currentTexts} />
-        
-        <Section 
-          id="projects"
-          title={currentTexts.projectsTitle}
-          description={currentTexts.projectsDesc}
-          imageUrl="https://via.placeholder.com/600x400"
-          bgUrl="https://assets.skyfilabs.com/images/blog/mechanicalminiproject.webp"
-          reverse={true} // <-- Ini untuk layout terbalik
-          texts={currentTexts}
-        />
-        
-        <Section 
-          id="internships"
-          title={currentTexts.internshipsTitle}
-          description={currentTexts.internshipsDesc}
-          imageUrl="https://via.placeholder.com/600x400"
-          bgUrl="https://assets.skyfilabs.com/images/blog/electronics-mini-project-feasibility-min.webp"
-          texts={currentTexts}
-        />
-        
-        <Section 
-          id="education"
-          title={currentTexts.educationTitle}
-          description={currentTexts.educationDesc}
-          imageUrl="https://via.placeholder.com/600x400"
-          bgUrl="https://www.emetechnologies.com/blog/civil-engineering/images/nx0.jpg"
-          reverse={true} // <-- Layout terbalik
-          texts={currentTexts}
-        />
-        
-        <Section 
-          id="organizations"
-          title={currentTexts.organizationsTitle}
-          description={currentTexts.organizationsDesc}
-          imageUrl="https://via.placeholder.com/600x400"
-          bgUrl="https://mesin.polsri.ac.id/wp-content/uploads/2022/11/WhatsApp-Image-2022-11-23-at-11.14.30-1-768x576.jpeg"
-          texts={currentTexts}
-        />
-      </main>
+      <div className="flex-grow">
+        <Routes>
+          <Route path="/" element={
+            <main>
+              <About id="about" texts={currentTexts} />
+              <Skills id="skills" texts={currentTexts} />
+              <Achievements id="achievements" texts={currentTexts} />
+              <Projects texts={currentTexts} />
+              <Contact id="contact" texts={currentTexts} />
+            </main>
+          } />
+          <Route path="/project/:id" element={
+            <div className="relative z-[100] project-detail-page min-h-full bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+              <ProjectDetail texts={currentTexts} />
+            </div>
+          } />
+        </Routes>
+      </div>
 
       {/* === BAGIAN PENUTUP (SELESAI) === */}
-      <Footer />
+      {!isProjectDetail && <Footer />}
       <ScrollTopButton />
-    </>
+    </div>
+  );
+}
+
+
+
+function App() {
+  return (
+    <Router basename="/portofolio-react/">
+      <AppContent />
+    </Router>
   );
 }
 

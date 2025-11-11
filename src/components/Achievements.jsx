@@ -1,5 +1,3 @@
-// src/components/Achievements.jsx
-
 import React, { useState, useRef } from 'react'; // <-- TAMBAHKAN useRef
 import './Achievements.css';
 
@@ -58,7 +56,7 @@ function TiltedCard({ item }) {
       <div className="tilted-card-glare"></div>
       
       {/* Ini adalah gambar Anda */}
-      <img src={item.url} alt={item.desc} className="tilted-card-image" />
+      <img src={item.url.startsWith('http') ? item.url : import.meta.env.BASE_URL + item.url} alt={item.desc} className="tilted-card-image" />
       
       {/* Ini adalah overlay deskripsi */}
       <div className="tilted-card-overlay">
@@ -72,12 +70,9 @@ function TiltedCard({ item }) {
 // ===================================================================
 // KOMPONEN HALAMAN DETAIL (Diperbarui)
 // ===================================================================
-function AchievementDetail({ item, onBack }) {
+function AchievementDetail({ item }) {
   return (
     <div className="achievement-detail">
-      <button onClick={onBack} className="back-button">
-        &larr; Kembali ke Daftar
-      </button>
       <h2 className="detail-title">{item.title}</h2>
       <span className="detail-source">{item.source}</span>
       <div className="detail-description">
@@ -112,8 +107,9 @@ function AchievementDetail({ item, onBack }) {
 // KOMPONEN DAFTAR "FLOWING MENU" (MASTER)
 // (Tidak ada perubahan)
 // ===================================================================
-function AchievementList({ texts, achievements, onSelect }) {
-  
+function AchievementList({ texts, achievements }) {
+  const [openAchievementId, setOpenAchievementId] = useState(null);
+
   const handleMouseEnter = (e) => {
     const el = e.currentTarget;
     const rect = el.getBoundingClientRect();
@@ -132,35 +128,43 @@ function AchievementList({ texts, achievements, onSelect }) {
     el.classList.remove('is-hovered');
   };
 
+  const handleItemClick = (id) => {
+    setOpenAchievementId(prevId => (prevId === id ? null : id));
+  };
+
   return (
     <>
-      <h2 className="section-title">{texts.achievementsTitle}</h2>
-      <p className="section-description">{texts.achievementsDesc}</p>
-      <div className="achievement-list-menu">
+      <h2 className="section-title reveal animate-fade-up delay-1">{texts.achievementsTitle}</h2>
+      <p className="section-description reveal animate-fade-up delay-2">{texts.achievementsDesc}</p>
+      <div className="achievement-list-menu reveal animate-fade-up delay-3">
         {achievements.map(item => (
-          <div
-            key={item.id}
-            className="achievement-menu-item"
-            onClick={() => onSelect(item.id)}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            <span className="menu-item-title">{item.title}</span>
-            <div className="marquee-wrapper">
-              <div className="marquee-content">
-                {[1, 2, 3, 4].map((i) => (
-                  <div className="marquee-block" key={i}>
-                    <img 
-                      src={item.thumbnailImage} 
-                      alt={item.marqueeText} 
-                      className="marquee-thumb" 
-                    />
-                    <span className="marquee-text">{item.marqueeText}</span>
-                  </div>
-                ))}
+          <React.Fragment key={item.id}>
+            <div
+              className={`achievement-menu-item ${openAchievementId === item.id ? 'active' : ''}`}
+              onClick={() => handleItemClick(item.id)}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <span className="menu-item-title">{item.title}</span>
+              <div className="marquee-wrapper">
+                <div className="marquee-content">
+                  {[1, 2, 3, 4].map((i) => (
+                    <div className="marquee-block" key={i}>
+                      <img 
+                        src={item.thumbnailImage.startsWith('http') ? item.thumbnailImage : import.meta.env.BASE_URL + item.thumbnailImage} 
+                        alt={item.marqueeText} 
+                        className="marquee-thumb" 
+                      />
+                      <span className="marquee-text">{item.marqueeText}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
+            <div className={`achievement-detail-dropdown ${openAchievementId === item.id ? 'open' : ''}`}>
+              <AchievementDetail item={item} />
+            </div>
+          </React.Fragment>
         ))}
         {achievements.length === 0 && (
           <p>Prestasi akan segera ditambahkan!</p>
@@ -175,40 +179,15 @@ function AchievementList({ texts, achievements, onSelect }) {
 // (Tidak ada perubahan)
 // ===================================================================
 function Achievements({ texts }) {
-  const [selectedId, setSelectedId] = useState(null);
   const achievements = texts.achievementsList || [];
-
-  const handleSelect = (id) => {
-    setSelectedId(id);
-    const section = document.getElementById('achievements');
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
-  const handleBack = () => {
-    setSelectedId(null);
-  };
-
-  const selectedItem = selectedId
-    ? achievements.find(item => item.id === selectedId)
-    : null;
 
   return (
     <section id="achievements" className="achievements-section reveal">
-      <div className="container">
-        {!selectedItem ? (
-          <AchievementList
-            texts={texts}
-            achievements={achievements}
-            onSelect={handleSelect}
-          />
-        ) : (
-          <AchievementDetail
-            item={selectedItem}
-            onBack={handleBack}
-          />
-        )}
+      <div className="container blurred-container">
+        <AchievementList
+          texts={texts}
+          achievements={achievements}
+        />
       </div>
     </section>
   );

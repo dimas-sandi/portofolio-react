@@ -9,9 +9,6 @@
 /* Section Utama (tetap sama) */
 .achievements-section {
   padding: 8rem 0;
-  background: 
-    linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)),
-    url('/images/bgachievements.jpg'); /* Pastikan path ini benar */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -41,7 +38,7 @@
 .achievement-menu-item {
   position: relative; 
   border-bottom: 1px solid #334155;
-  padding: 2rem 1.5rem; 
+  padding: 1rem 1.5rem; 
   cursor: pointer;
   overflow: hidden;
   text-align: center;
@@ -196,6 +193,22 @@
   color: #1a202c;
   text-transform: uppercase;
   line-height: 1; /* <-- TAMBAHKAN INI */
+}
+
+/* Gaya untuk detail dropdown */
+.achievement-detail-dropdown {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.7s ease-out, opacity 0.7s ease-out;
+  padding: 0 1.5rem; /* Sesuaikan padding agar tidak terlalu mepet */
+}
+
+.achievement-detail-dropdown.open {
+  max-height: 3000px; /* Cukup besar untuk menampung konten */
+  opacity: 1;
+  padding-top: 1.5rem; /* Beri jarak dari item menu di atasnya */
+  padding-bottom: 1.5rem;
 }
 
 /* Halaman Detail (Tidak berubah) */

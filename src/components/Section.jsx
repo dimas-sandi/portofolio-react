@@ -9,17 +9,17 @@ const Section = ({ id, title, description, imageUrl, bgUrl, reverse, texts }) =>
   const sectionClasses = `section-content-split ${reverse ? 'reverse' : ''}`;
   
   return (
-    <section 
-      id={id} 
-      className="section" 
-      style={{ backgroundImage: `url('${bgUrl}')` }}
+    <section
+      id={id}
+      className="section"
+      style={bgUrl ? { backgroundImage: `url('${bgUrl}')` } : {}}
     >
       <div className={sectionClasses}>
         <div className="text-content reveal animate-fade-left">
           <h2>{title}</h2>
           <p>{description}</p>
           <a href="#" className="btn-learn-more">
-            {texts.learnMore} 
+            {texts.learnMore}
           </a>
         </div>
         <div className="media-content reveal animate-fade-right">

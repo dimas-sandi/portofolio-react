@@ -1,0 +1,11 @@
+.letter {
+  transition: color 0.3s ease-in-out;
+}
+
+.letter.dark {
+  color: #4a5568; /* A dark gray color */
+}
+
+.letter.lit {
+  color: #ffffff; /* White */
+}

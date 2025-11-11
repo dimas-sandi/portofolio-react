@@ -1,5 +1,3 @@
-// src/components/Skills.jsx
-
 import React from 'react';
 import VelocityText from './VelocityText'; // Ini sudah benar
 
@@ -22,19 +20,19 @@ const skillsLogos = [
 // --- Komponen Utama Skills ---
 const Skills = ({ texts, id }) => {
     return (
-        <section id={id} className="section skills-section">
-            <div className="section-content"> 
+        <section id={id} className="section skills-section reveal">
+            <div className="section-content blurred-container"> 
                 
                 {/* --- 1. TEKS ATAS (HARUS ADA 2 BARIS INI) --- */}
                 <VelocityText text="mechanical engineering " baseVelocity={-5} />
                 <VelocityText text="we design we build we deploy " baseVelocity={5} />
 
                 {/* --- 2. JUDUL DAN DESKRIPSI --- */}
-                <h2 className="skills-title">{texts.skillsTitle}</h2>
-                <p className="skills-desc">{texts.skillsDesc}</p>
+                <h2 className="skills-title reveal animate-fade-up delay-1">{texts.skillsTitle}</h2>
+                <p className="skills-desc reveal animate-fade-up delay-2">{texts.skillsDesc}</p>
                 
                 {/* --- 3. MARQUEE LOGO --- */}
-                <div className="linear-loop-container">
+                <div className="linear-loop-container reveal animate-fade-up delay-3">
                     <div className="linear-loop-track">
                         {/* Render list 1x */}
                         {skillsLogos.map((logo) => (

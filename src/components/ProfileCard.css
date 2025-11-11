@@ -1,0 +1,266 @@
+.pc-card-wrapper {
+  --icon: none;
+  --grain: none;
+  --inner-gradient: linear-gradient(145deg, #60496e8c 0%, #71C4FF44 100%);
+  --behind-glow-color: rgba(125, 190, 255, 0.67);
+  --behind-glow-size: 50%;
+  --pointer-x: 50%;
+  --pointer-y: 50%;
+  --background-x: 50%;
+  --background-y: 50%;
+  --pointer-from-center: 0;
+  --pointer-from-top: 0.5;
+  --pointer-from-left: 0.5;
+  --rotate-x: 0deg;
+  --rotate-y: 0deg;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.pc-behind {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--behind-glow-size);
+  height: var(--behind-glow-size);
+  background: var(--behind-glow-color);
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.pc-card-shell {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 1;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease;
+}
+
+.pc-card-shell.active .pc-behind {
+  opacity: 1;
+}
+
+.pc-card-shell.active .pc-card {
+  transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y));
+}
+
+.pc-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.pc-inside {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--inner-gradient);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.pc-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.pc-glare {
+  position: absolute;
+  top: var(--pointer-y);
+  left: var(--pointer-x);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.1) 40%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.pc-card-shell:not(.active) .pc-glare {
+  opacity: 0;
+}
+
+.pc-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  text-align: center;
+  color: white;
+}
+
+.pc-avatar-content {
+  justify-content: flex-start;
+  padding-top: 40px;
+}
+
+.pc-details {
+  margin-top: auto;
+}
+
+.pc-details h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  color: white;
+}
+
+.pc-details p {
+  font-size: 14px;
+  margin: 0;
+  opacity: 0.8;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 16px;
+}
+
+.pc-user-info {
+  margin-top: auto;
+  width: 100%;
+}
+
+.pc-user-details {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.pc-mini-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.pc-mini-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pc-user-text {
+  flex: 1;
+  text-align: left;
+}
+
+.pc-handle {
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 2px;
+}
+
+.pc-status {
+  font-size: 12px;
+  opacity: 0.7;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.pc-contact-btn {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.pc-contact-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.pc-card-shell.entering .pc-card {
+  animation: pc-enter 0.6s ease-out;
+}
+
+@keyframes pc-enter {
+  0% {
+    transform: scale(0.8) rotateX(20deg) rotateY(-20deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotateX(0deg) rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .pc-card-shell {
+    max-width: 280px;
+  }
+
+  .pc-content {
+    padding: 20px;
+  }
+
+  .avatar {
+    width: 70px;
+    height: 70px;
+  }
+
+  .pc-details h3 {
+    font-size: 16px;
+  }
+
+  .pc-details p {
+    font-size: 13px;
+  }
+}

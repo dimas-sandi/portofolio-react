@@ -2,9 +2,12 @@
 
 import React from 'react';
 import { Menu, X } from 'react-feather'; // Impor ikon dari react-feather
+import { Link, useLocation } from 'react-router-dom';
 
 // Komponen Header menerima props dari App.jsx
 const Header = ({ lang, setLang, texts, isScrolled, isMobileOpen, toggleMobile }) => {
+  const location = useLocation();
+  const isProjectPage = location.pathname.startsWith('/project');
 
   const handleLangChange = (newLang) => {
     setLang(newLang);
@@ -14,20 +17,28 @@ const Header = ({ lang, setLang, texts, isScrolled, isMobileOpen, toggleMobile }
     toggleMobile(false); // Tutup menu setelah link diklik
   };
 
+  const NavLink = ({ to, children, onClick }) => {
+    if (isProjectPage) {
+      return <Link to={`/${to}`} onClick={onClick}>{children}</Link>;
+    }
+    return <a href={to} onClick={onClick}>{children}</a>;
+  };
+
   return (
     <>
       <header id="main-header" className={isScrolled ? 'scrolled' : ''}>
         <div className="header-container">
-          <a href="#about" className="logo">PORTOFOLIO</a>
+          <a href="#about" className="logo">
+            <img src={import.meta.env.BASE_URL + "vite.svg"} alt="Logo" className="logo-icon" />
+            PORTOFOLIO
+          </a>
           
           <nav className="desktop-nav">
-            <a href="#about">{texts.navAbout}</a>
-            <a href="#skills">{texts.navSkills}</a>
-            <a href="#achievements">{texts.navAchievements}</a>
-            <a href="#projects">{texts.navProjects}</a>
-            <a href="#internships">{texts.navInternships}</a>
-            <a href="#education">{texts.navEducation}</a>
-            <a href="#organizations">{texts.navOrganizations}</a>
+            <NavLink to="#about">{texts.navAbout}</NavLink>
+            <NavLink to="#skills">{texts.navSkills}</NavLink>
+            <NavLink to="#achievements">{texts.navAchievements}</NavLink>
+            <NavLink to="#projects">{texts.navProjects}</NavLink>
+            <NavLink to="#contact">{texts.navContact}</NavLink>
           </nav>
 
           <div className="header-right">
@@ -70,13 +81,11 @@ const Header = ({ lang, setLang, texts, isScrolled, isMobileOpen, toggleMobile }
         >
           <X />
         </button>
-        <a href="#about" onClick={handleMobileLinkClick}>{texts.navAbout}</a>
-        <a href="#skills" onClick={handleMobileLinkClick}>{texts.navSkills}</a>
-        <a href="#achievements" onClick={handleMobileLinkClick}>{texts.navAchievements}</a>
-        <a href="#projects" onClick={handleMobileLinkClick}>{texts.navProjects}</a>
-        <a href="#internships" onClick={handleMobileLinkClick}>{texts.navInternships}</a>
-        <a href="#education" onClick={handleMobileLinkClick}>{texts.navEducation}</a>
-        <a href="#organizations" onClick={handleMobileLinkClick}>{texts.navOrganizations}</a>
+        <NavLink to="#about" onClick={handleMobileLinkClick}>{texts.navAbout}</NavLink>
+        <NavLink to="#skills" onClick={handleMobileLinkClick}>{texts.navSkills}</NavLink>
+        <NavLink to="#achievements" onClick={handleMobileLinkClick}>{texts.navAchievements}</NavLink>
+        <NavLink to="#projects" onClick={handleMobileLinkClick}>{texts.navProjects}</NavLink>
+        <NavLink to="#contact" onClick={handleMobileLinkClick}>{texts.navContact}</NavLink>
       </nav>
     </>
   );

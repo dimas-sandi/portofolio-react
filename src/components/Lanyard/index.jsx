@@ -9,8 +9,8 @@ import { BallCollider, CuboidCollider, Physics, RigidBody, useRopeJoint, useSphe
 import { MeshLineGeometry, MeshLineMaterial } from 'meshline';
 
 // Aset dimuat dari folder 'public/'
-const cardPath = '/card.glb';
-const lanyardPath = '/lanyard.png';
+const cardPath = import.meta.env.BASE_URL + 'card.glb';
+const lanyardPath = import.meta.env.BASE_URL + 'lanyard.png';
 
 import * as THREE from 'three';
 import './Lanyard.css'; // Kita akan buat file ini

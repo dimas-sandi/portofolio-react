@@ -1,0 +1,196 @@
+/* ProjectDetail scoped styles */
+
+:root {
+  --pd-container-max: 1280px; /* align with max-w-7xl-ish */
+  --pd-gap: 2rem;
+  --pd-gap-lg: 3rem;
+  --pd-radius-lg: 1.5rem; /* ~ rounded-3xl */
+  --pd-radius-md: 1rem;   /* ~ rounded-2xl */
+  --pd-border: rgba(255,255,255,0.12);
+  --pd-border-soft: rgba(255,255,255,0.08);
+  --pd-surface: rgba(255,255,255,0.06);
+  --pd-surface-strong: rgba(255,255,255,0.10);
+  --pd-divider: rgba(148,163,184,0.15);
+  --pd-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* Root container ensures no accidental overflow and consistent spacing */
+.pd-root {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Constrain content width and vertical rhythm */
+.pd-container {
+  width: 100%;
+  max-width: var(--pd-container-max);
+  margin: 0 auto;
+  padding: 6rem 1rem; /* Increased padding-top for small screens */
+  position: relative;
+}
+
+@media (min-width: 640px) {
+  .pd-container { padding: 5rem 1.5rem; }
+}
+
+@media (min-width: 1024px) {
+  .pd-container { padding: 6rem 2rem; }
+}
+
+/* Grid layout for main content */
+.pd-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--pd-gap);
+  align-items: start;
+}
+
+/* Column divider on desktop for clearer separation */
+@media (min-width: 1024px) {
+  .pd-grid {
+    grid-template-columns: 1fr 1fr !important; /* Force 2 columns for desktop */
+    gap: var(--pd-gap-lg);
+  }
+}
+
+/* Sticky only on large screens to avoid mobile jank */
+.pd-sticky {
+  position: static;
+}
+
+@media (min-width: 1024px) {
+  .pd-sticky {
+    position: sticky;
+    top: 5.5rem; /* a bit tighter than top-24 for alignment with header */
+  }
+}
+
+/* Card surfaces with consistent radii and borders */
+/* Remove translucent surface styling (keep layout only) */
+.pd-surface {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.pd-surface--soft {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+/* Aspect ratios for the viewer container to stabilize layout */
+.pd-aspect {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3; /* default */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0; /* remove inner padding for clean look */
+}
+
+@media (min-width: 640px) {
+  .pd-aspect { aspect-ratio: 3 / 2; }
+}
+
+@media (min-width: 1024px) {
+  .pd-aspect { aspect-ratio: 4 / 3; }
+}
+
+.pd-aspect-inner {
+  width: 100%;
+  height: 100%;
+  max-width: 48rem; /* ~ max-w-2xl */
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Smooth visual alignment between the two columns */
+@media (min-width: 1024px) {
+  .pd-aspect-inner { max-width: 40rem; }
+}
+
+/* Typography normalization */
+.pd-title {
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+}
+
+/* Offset to slightly lower the title for alignment with model container */
+.pd-title-offset {
+  margin-top: 0; /* Removed negative margin for mobile */
+}
+
+@media (min-width: 768px) {
+  .pd-title-offset { margin-top: 48px; }
+}
+
+@media (min-width: 1024px) {
+  .pd-title-offset { margin-top: 50px; }
+}
+
+/* Tighten text measure and spacing in right column */
+.pd-right-col > * + * {
+  margin-top: 2rem;
+}
+
+.pd-overview p {
+  max-width: 60ch;
+}
+
+.pd-rule {
+  width: 6rem;
+  height: 0.25rem;
+  border-radius: 9999px;
+}
+
+@media (min-width: 768px) { .pd-rule { width: 6.5rem; } }
+
+/* Info grid becomes 1/2/3 columns with controlled gaps */
+.pd-info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .pd-info-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 1024px) {
+  .pd-info-grid { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+/* Minor alignment fixes for inline dots in info items */
+.pd-dot {
+  width: 0.625rem; /* 10px */
+  height: 0.625rem;
+  border-radius: 9999px;
+}
+
+@media (min-width: 768px) {
+  .pd-dot { width: 0.75rem; height: 0.75rem; }
+}
+
+/* Back button placement fine-tune for safe area */
+.pd-back {
+  position: fixed;
+  inset: auto auto auto 1rem;
+  z-index: 50;
+}
+
+@media (min-width: 640px) {
+  .pd-back { left: 1.5rem; top: 1.5rem; }
+}
+
+/* Remove hover transitions since surfaces are disabled */
+.pd-surface--soft { transition: none; }
+.pd-surface--soft:hover { transform: none; background: transparent; }

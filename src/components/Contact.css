@@ -1,0 +1,206 @@
+.contact-section {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.contact-section .section-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: var(--text-color-primary);
+}
+
+.contact-desc {
+    font-size: 1.1rem;
+    color: var(--text-color-secondary);
+    margin-bottom: 2rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: left;
+}
+
+.contact-form .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form label {
+    font-size: 1rem;
+    color: var(--text-color-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    padding: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-color-primary);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form .submit-button {
+    background-color: var(--accent-color);
+    color: var(--button-text-color);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-self: center; /* Center the button */
+    margin-top: 1rem;
+}
+
+.contact-form .submit-button:hover {
+    background-color: var(--accent-color-dark);
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contact-title {
+        font-size: 2rem;
+    }
+
+    .contact-desc {
+        font-size: 1rem;
+    }
+
+    .contact-form {
+        padding: 0 1rem;
+    }
+}
+
+/* Success Popup Styling */
+.success-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 90%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.success-popup p {
+    font-size: 1.2rem;
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+.close-popup-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.close-popup-button:hover {
+    opacity: 1;
+}
+
+/* Checkmark Animation */
+.checkmark-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4CAF50; /* Green background */
+}
+
+.checkmark {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 4;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    box-shadow: inset 0px 0px 0px #4CAF50;
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+}
+
+.checkmark-circle-path {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+    stroke: #fff;
+    fill: none;
+    animation: stroke .6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark-check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke .3s cubic-bezier(0.65, 0, 0.45, 1) .8s forwards;
+}
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fill {
+    100% {
+        box-shadow: inset 0px 0px 0px 52px #4CAF50;
+    }
+}
+
+@keyframes scale {
+    0%, 100% {
+        transform: none;
+    }
+    50% {
+        transform: scale3d(1.1, 1.1, 1);
+    }
+}
