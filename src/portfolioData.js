@@ -16,7 +16,7 @@ export const getPortfolioData = (texts) => [
   {
     id: "project2",
     title: "MESIN PULTRUSI",
-    description: "Complex 3D modeling for mechanical components using SolidWorks and Fusion 360.",
+    description: "Mesin Pultrusi adalah perangkat manufaktur digital yang dirancang untuk proses pultrusi dengan kontrol presisi terhadap kecepatan dan suhu, menggunakan teknologi Smart IoT. Mesin ini menggabungkan kontrol mekanis, termal, dan antarmuka pengguna berbasis web. Sistem ini terdiri dari dua prosesor, ATmega328P yang mengontrol operasi real-time seperti motor stepper dan suhu, serta ESP8266 yang menyediakan konektivitas WiFi dan antarmuka web. Mesin ini dilengkapi dengan motor stepper, driver TB6600, dan sistem PID untuk mengontrol suhu dan kecepatan secara presisi. Antarmuka web memungkinkan pengguna mengatur suhu, RPM, dan pengaturan PID, serta memonitor kondisi mesin secara real-time. Mesin juga memiliki konektivitas fleksibel WiFi dan fitur stabilitas tinggi untuk memastikan responsivitas antarmuka. Selain itu, mesin ini dilengkapi dengan pisau karbon yang digunakan untuk memotong botol plastik, sehingga memungkinkan pemrosesan bahan secara efisien dalam proses pultrusi.",
     imageUrl: "project/pultrusi.jpg",
     modelUrl: "project/pultrusi.glb",
   },
@@ -44,9 +44,9 @@ export const getPortfolioData = (texts) => [
   {
     id: "project6",
     title: "PLTS CIP PERTAMINA",
-    description: "Description for Project 6. This is another placeholder project.",
-    imageUrl: "https://via.placeholder.com/800x600/ddd/000?text=Project+6",
-    modelUrl: "card.glb",
+    description: "Dalam menjalankan visi dan misi Pertamina Net-Zero  Emission (NZE)  atau  nol  emisi  karbon , Salah satu Solusi untuk mengatasinya adalah menggunakan energi terbarukan dalam hal ini adalah energi surya, Solusi ini juga dapat mengurangi konsumsi daya kwh Listrik PLN di AFT SMB II sebesar 4365.4  kwh. merancang Pembangkit Listrik Tenaga Surya dibutuhkan data kebutuhan daya pada area yang akan dialiri Listrik (pada konteks ini Maintenance Pantry). Setelah diketahui kebutuhan dayanya  bisa dihitung kebutuhan dari spesifikasi komponen yang akan digunakan nantinya. Setelah komponen ditentukan, desain dari komponen diperlukan untuk menyatukan semua komponen menjadi satu kesatuan (assembly) agar bisa menunjukkan model 3D dan ukuran rangka Solar Panel yang sudah dilakukan Analisa FEA perlu dibuat agar dapat memberikan gambaran dalam proses pengerjaan atau perakitan PLTS.",
+    imageUrl: "project/plts.jpg",
+    modelUrl: "project/plts.glb",
   },
   {
     id: "project7",
