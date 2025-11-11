@@ -14,6 +14,12 @@
         transform: translateY(-2000px); 
     }
 }
+
+/* Keyframes for the scrolling linear loop */
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 /* -------------------------
    RESET & GLOBAL STYLING
    ------------------------- */
@@ -572,7 +578,7 @@ footer p {
     }
     to {
         /* Pindahkan ke kiri sejauh setengah dari total lebar (1 set logo) */
-        transform: translateX(-50%);
+        transform: translateY(-2000px); 
     }
 }
 
@@ -583,24 +589,7 @@ footer p {
     position: relative; /* Diperlukan untuk efek fade */
 }
 
-/* Efek fade (gradien) di tepi kiri dan kanan */
-.linear-loop-container::before,
-.linear-loop-container::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100px; /* Lebar fade */
-    z-index: 2;
-}
-.linear-loop-container::before {
-    left: 0;
-    background: linear-gradient(to right, #050505 0%, transparent 100%);
-}
-.linear-loop-container::after {
-    right: 0;
-    background: linear-gradient(to left, #050505 0%, transparent 100%);
-}
+
 
 
 /* 2. Track (Yang berisi logo dan bergerak) */
@@ -609,7 +598,7 @@ footer p {
     /* Lebar = (12 logo * 2 set) * 180px per logo */
     width: calc(12 * 2 * 180px); 
     /* Kecepatan: 40 detik untuk 1 putaran */
-    animation: scroll-linear 40s linear infinite; 
+    animation: scroll-left 40s linear infinite; 
     white-space: nowrap;
 }
 
@@ -705,7 +694,7 @@ footer p {
 
 @media (max-width: 768px) {
   .velocity-text {
-    font-size: 2;
+    font-size: 2rem;
   }
 }
 
@@ -743,10 +732,10 @@ footer p {
     .section {
         padding: 4rem 1rem; /* Adjust padding for medium screens */
     }
-    .section h2 {
+    .section-title { /* Target section-title */
         font-size: 2.5rem;
     }
-    .section p {
+    .section-description { /* Target section-description */
         font-size: 1rem;
     }
     .blurred-container {
@@ -759,10 +748,10 @@ footer p {
     .section {
         padding: 3rem 0.5rem; /* Adjust padding for small screens */
     }
-    .section h2 {
+    .section-title { /* Target section-title */
         font-size: 2rem;
     }
-    .section p {
+    .section-description { /* Target section-description */
         font-size: 0.9rem;
     }
     .blurred-container {
@@ -778,8 +767,8 @@ footer p {
 }
 
 @media (max-width: 480px) {
-    .section h2 {
-        font-size: 1.8rem;
+    .section-title { /* Target section-title */
+        font-size: 1.4rem; /* Increased slightly */
     }
     .hero-text-content h1 {
         font-size: 1.5rem;
@@ -796,5 +785,11 @@ footer p {
     .btn-learn-more {
         padding: 0.6rem 1.2rem;
         font-size: 0.9rem;
+    }
+    .linear-loop-label {
+        font-size: 0.8rem; /* Make skill names slightly smaller on very small screens */
+    }
+    .section-description { /* Target section-description */
+        font-size: 0.7rem; /* Further reduced for very small screens */
     }
 }

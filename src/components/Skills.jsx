@@ -3,18 +3,18 @@ import VelocityText from './VelocityText'; // Ini sudah benar
 
 // --- DATA SKILL ---
 const skillsLogos = [
-    { name: "Inventor", icon: "/icons/inventor.png" },
-    { name: "Solidworks", icon: "/icons/solidworks.png" },
-    { name: "AutoCAD", icon: "/icons/autocad.png" },
-    { name: "ArduinoIDE", icon: "/icons/arduino.svg" },
-    { name: "Fluidsm", icon: "/icons/fluidsm.png" },
-    { name: "EWB", icon: "/icons/ewb.png" },
-    { name: "EasyEDA", icon: "/icons/easyeda.png" },
-    { name: "NX Siemens", icon: "/icons/nx_siemens.svg" },
-    { name: "ZW 3D", icon: "/icons/zw3d.png" },
-    { name: "MasterCAM", icon: "/icons/mastercam.png" },
-    { name: "Fusion360", icon: "/icons/fusion360.png" }, // (Saya perbaiki nama ini)
-    { name: "Photoshop", icon: "/icons/photoshop.svg" },
+    { name: "Inventor", icon: import.meta.env.BASE_URL + "icons/inventor.png" },
+    { name: "Solidworks", icon: import.meta.env.BASE_URL + "icons/solidworks.png" },
+    { name: "AutoCAD", icon: import.meta.env.BASE_URL + "icons/autocad.png" },
+    { name: "ArduinoIDE", icon: import.meta.env.BASE_URL + "icons/arduino.svg" },
+    { name: "Fluidsm", icon: import.meta.env.BASE_URL + "icons/fluidsm.png" },
+    { name: "EWB", icon: import.meta.env.BASE_URL + "icons/ewb.png" },
+    { name: "EasyEDA", icon: import.meta.env.BASE_URL + "icons/easyeda.png" },
+    { name: "NX Siemens", icon: import.meta.env.BASE_URL + "icons/nx_siemens.svg" },
+    { name: "ZW 3D", icon: import.meta.env.BASE_URL + "icons/zw3d.png" },
+    { name: "MasterCAM", icon: import.meta.env.BASE_URL + "icons/mastercam.png" },
+    { name: "Fusion360", icon: import.meta.env.BASE_URL + "icons/fusion360.png" },
+    { name: "Photoshop", icon: import.meta.env.BASE_URL + "icons/photoshop.svg" },
 ];
 
 // --- Komponen Utama Skills ---

@@ -11,14 +11,11 @@ const About = ({ texts }) => {
     <section id="about" className="section full-screen">
       <div className="section-content hero-layout">
         
-        {/* 2. INI DIA PENGGANTINYA! */}
         <div className="hero-image-container reveal animate-zoom-in delay-2">
-          {/* Memanggil komponen 3D Anda */}
           <Lanyard />
         </div>
 
         <div className="hero-text-content">
-          {/* ... (Semua kode h1, h2, social-links, tetap SAMA) ... */}
           <h1 data-lang-key="heroTitle" className="reveal animate-fade-up">
             {texts.heroTitle}
           </h1>
@@ -32,7 +29,7 @@ const About = ({ texts }) => {
             <a href="https://www.tiktok.com/@dimskuyyyyyyyyyy" target="_blank" rel="noopener noreferrer" aria-label="Tiktok">
               <PlayCircle />
             </a>
-            <a href="https://github.com/dimas-sandi" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><GitHub /></a> {/* Tambahkan GitHub */}
+            <a href="https://github.com/dimas-sandi" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><GitHub /></a>
           </div>
           <NormalTypingEffect 
             text={texts.aboutMeText.trim()} 

@@ -57,7 +57,7 @@
     padding-bottom: 0;
   }
   .pd-text-container {
-    margin-top: 0;
+    margin-top: 3rem; /* Lower the text content by 3rem on desktop */
     padding-top: 0;
   }
 }
@@ -65,14 +65,14 @@
 /* Mobile adjustments */
 @media (max-width: 1023px) {
   .pd-model-container {
-    margin-top: 2rem; /* Push model down from text */
+    margin-top: 6rem; /* Increased margin to push model further down */
     margin-bottom: 0;
     padding-bottom: 0;
   }
   .pd-text-container {
     margin-top: 0;
     padding-top: 0;
-    margin-bottom: 2rem; /* Add space below text before model */
+    margin-bottom: 6rem; /* Increased margin below text */
   }
   .pd-container {
     padding-top: 4rem; /* Adjust overall top padding for mobile */
@@ -88,8 +88,13 @@
   .pd-scroll-hint {
     display: flex; /* Show on mobile */
     justify-content: center;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    position: fixed; /* Fixed at the bottom */
+    bottom: 1rem; /* 16px from bottom */
+    left: 0;
+    right: 0;
+    z-index: 50; /* Ensure it's above other content */
+    background: none; /* Remove gradient background */
+    padding: 1rem 0; /* Padding for the hint itself */
   }
   .pd-scroll-hint button {
     background: none;
@@ -105,6 +110,18 @@
   .pd-scroll-hint button svg {
     width: 1.2rem;
     height: 1.2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .pd-scroll-hint {
+    display: none !important; /* Explicitly hide on desktop */
+  }
+}
+
+@media (min-width: 1024px) {
+  .pd-scroll-hint {
+    display: none !important; /* Explicitly hide on desktop */
   }
 }
 

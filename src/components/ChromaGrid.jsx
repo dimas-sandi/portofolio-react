@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import LazyLoad from './LazyLoad'; // Import LazyLoad
 import './ChromaGrid.css';
 
-const ChromaGrid = ({ items }) => {
+const ChromaGrid = ({ items, animateOnMount = false }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   // Animation variants for staggered entrance
@@ -40,13 +39,15 @@ const ChromaGrid = ({ items }) => {
     }
   };
 
+  const animationProps = animateOnMount
+    ? { initial: "hidden", animate: "visible" }
+    : { initial: "hidden", whileInView: "visible", viewport: { once: true, margin: "-50px" } };
+
   return (
     <motion.div
       className="chroma-grid"
       variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
+      {...animationProps}
     >
       {items.map((item, index) => {
         const isHovered = hoveredIndex === index;
@@ -71,7 +72,6 @@ const ChromaGrid = ({ items }) => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               >
-                <LazyLoad placeholderHeight="250px"> {/* Wrap image with LazyLoad */}
                   <motion.img
                     src={item.imageUrl}
                     alt={item.title}
@@ -85,7 +85,6 @@ const ChromaGrid = ({ items }) => {
                       scale: 1.1
                     }}
                   />
-                </LazyLoad>
               </motion.div>
               <motion.div
                 className="chroma-content"
@@ -98,6 +97,7 @@ const ChromaGrid = ({ items }) => {
                 >
                   {item.title}
                 </motion.h3>
+                <span className="text-[0.65rem] text-gray-400 opacity-70 mt-1 text-center">Click for detail</span>
               </motion.div>
             </Link>
           </motion.div>

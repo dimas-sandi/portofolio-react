@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom'; // Import Link
 import ChromaGrid from './ChromaGrid';
 import { getPortfolioData } from '../portfolioData';
 
 const Projects = ({ texts }) => {
   const allProjects = getPortfolioData(texts).filter(item => item.id !== 'projects'); // Exclude the generic projects entry
-  const [showAllProjects, setShowAllProjects] = useState(false);
-
-  const projectsToShow = showAllProjects ? allProjects : allProjects.slice(0, 6);
+  const initialProjects = allProjects.slice(0, 3); // Show only 3 projects initially
 
   return (
     <section id="projects" className="section relative z-10">
@@ -50,10 +49,10 @@ const Projects = ({ texts }) => {
           }}
           viewport={{ once: true }}
         >
-          <ChromaGrid items={projectsToShow} />
+          <ChromaGrid items={initialProjects} />
         </motion.div>
 
-        {allProjects.length > 6 && !showAllProjects && (
+        {allProjects.length > 6 && (
           <motion.div
             className="flex justify-center mt-12"
             initial={{ opacity: 0, y: 20 }}
@@ -61,12 +60,14 @@ const Projects = ({ texts }) => {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <button
-              onClick={() => setShowAllProjects(true)}
-              className="px-8 py-3 bg-purple-600 text-white font-semibold rounded-full shadow-lg hover:bg-purple-700 transition-colors duration-300"
+            <Link
+              to="/all-projects"
+              className="px-16 py-6 bg-purple-600 text-white font-semibold rounded-3xl shadow-lg hover:bg-purple-700 transition-colors duration-300 inline-flex items-center justify-center"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              View More Projects
-            </button>
+              Lihat Lebih Banyak Project
+            </Link>
           </motion.div>
         )}
       </div>

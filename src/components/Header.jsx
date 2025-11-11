@@ -2,13 +2,11 @@
 
 import React from 'react';
 import { Menu, X } from 'react-feather'; // Impor ikon dari react-feather
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // Komponen Header menerima props dari App.jsx
 const Header = ({ lang, setLang, texts, isScrolled, isMobileOpen, toggleMobile }) => {
-  const location = useLocation();
-  const isProjectPage = location.pathname.startsWith('/project');
-
+// Komponen Header menerima props dari App.jsx
   const handleLangChange = (newLang) => {
     setLang(newLang);
   };
@@ -18,20 +16,19 @@ const Header = ({ lang, setLang, texts, isScrolled, isMobileOpen, toggleMobile }
   };
 
   const NavLink = ({ to, children, onClick }) => {
-    if (isProjectPage) {
-      return <Link to={`/${to}`} onClick={onClick}>{children}</Link>;
-    }
-    return <a href={to} onClick={onClick}>{children}</a>;
+    // All navigation links should use react-router-dom's Link component
+    // For hash links, Link will navigate to the base path and then scroll to the hash.
+    return <Link to={`/${to}`} onClick={onClick}>{children}</Link>;
   };
 
   return (
     <>
       <header id="main-header" className={isScrolled ? 'scrolled' : ''}>
         <div className="header-container">
-          <a href="#about" className="logo">
+          <Link to="/#about" className="logo">
             <img src={import.meta.env.BASE_URL + "vite.svg"} alt="Logo" className="logo-icon" />
             PORTOFOLIO
-          </a>
+          </Link>
           
           <nav className="desktop-nav">
             <NavLink to="#about">{texts.navAbout}</NavLink>

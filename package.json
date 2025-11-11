@@ -2,7 +2,6 @@
   "name": "portfolio-react",
   "private": true,
   "version": "0.0.0",
-
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,7 +9,6 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "serve": "http-server dist"
-
   },
   "dependencies": {
     "@formspree/react": "^3.0.0",
@@ -44,9 +42,9 @@
     "@vitejs/plugin-react": "^5.0.4",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.36.0",
+    "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.22",
-
     "globals": "^16.4.0",
     "http-server": "^14.1.1",
     "postcss": "^8.5.6",

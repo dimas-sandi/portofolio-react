@@ -6,9 +6,9 @@ import { getPortfolioData } from '../portfolioData';
 import './ProjectDetail.css';
 import TypingEffect from './TypingEffect';
 
-const ProjectDetail = ({ texts }) => {
+const ProjectDetail = ({ currentLang }) => {
   const { id } = useParams();
-  const projects = getPortfolioData(texts);
+  const projects = getPortfolioData();
   const project = projects.find(p => p.id === id);
 
   if (!project) {
@@ -57,12 +57,12 @@ const ProjectDetail = ({ texts }) => {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="order-1 lg:order-2 w-full space-y-6 pd-text-container"
+            className="order-1 lg:order-2 w-full space-y-6 pd-text-container text-center lg:text-right"
           >
             {/* Title */}
             <div>
               <h1 className="pd-title-offset text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-3">
-                {project.title}
+                {currentLang === 'en' ? project.title_en : project.title}
               </h1>
             </div>
 
@@ -70,13 +70,13 @@ const ProjectDetail = ({ texts }) => {
             <div>
               <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2">Project Overview</h2>
               <p className="text-gray-300 text-sm md:text-base lg:text-lg leading-relaxed">
-                <TypingEffect text={project.description} speed={25} />
+                <TypingEffect text={currentLang === 'en' ? project.description_en : project.description} speed={25} />
               </p>
             </div>
           </motion.div>
         </div>
         {/* Scroll hint for mobile */}
-        <div className="pd-scroll-hint lg:hidden flex justify-center mt-8">
+        <div className="pd-scroll-hint flex justify-center mt-8">
             <button 
                 onClick={() => document.querySelector('.pd-model-container').scrollIntoView({ behavior: 'smooth' })}
                 className="flex items-center space-x-2 text-white text-sm animate-bounce"

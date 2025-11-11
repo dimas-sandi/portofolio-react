@@ -10,6 +10,7 @@ import Achievements from './components/Achievements';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import ProjectDetail from './components/ProjectDetail';
+import AllProjects from './components/AllProjects';
 import Footer from './components/Footer';
 import ScrollTopButton from './components/ScrollTopButton';
 // import LiquidEther from './components/LiquidEther/LiquidEther';
@@ -17,6 +18,10 @@ import ScrollTopButton from './components/ScrollTopButton';
 function AppContent() {
   const location = useLocation();
   const isProjectDetail = location.pathname.startsWith('/project/');
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top on route change
+  }, [location.pathname]); // Trigger on pathname change
 
   useEffect(() => {
     if (location.hash) {
@@ -161,7 +166,12 @@ function AppContent() {
           } />
           <Route path="/project/:id" element={
             <div className="relative z-[100] project-detail-page min-h-full bg-gradient-to-br from-gray-900 via-gray-800 to-black">
-              <ProjectDetail texts={currentTexts} />
+              <ProjectDetail texts={currentTexts} currentLang={lang} />
+            </div>
+          } />
+          <Route path="/all-projects" element={
+            <div className="relative z-[100] all-projects-page min-h-full bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+              <AllProjects texts={currentTexts} />
             </div>
           } />
         </Routes>
@@ -177,8 +187,9 @@ function AppContent() {
 
 
 function App() {
+  const basename = import.meta.env.VITE_NETLIFY_DEPLOY === 'true' ? '/' : '/portofolio-react';
   return (
-    <Router>
+    <Router basename={basename}>
       <AppContent />
     </Router>
   );

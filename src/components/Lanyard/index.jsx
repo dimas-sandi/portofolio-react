@@ -2,7 +2,7 @@
 
 /* eslint-disable react/no-unknown-property */
 'use client';
-import { useEffect, useRef, useState, Suspense } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Canvas, extend, useFrame } from '@react-three/fiber';
 import { useGLTF, useTexture, Environment, Lightformer } from '@react-three/drei';
 import { BallCollider, CuboidCollider, Physics, RigidBody, useRopeJoint, useSphericalJoint } from '@react-three/rapier';
@@ -25,7 +25,6 @@ export default function Lanyard({ position = [0, 0, 18], gravity = [0, -40, 0], 
         gl={{ alpha: transparent }}
         onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
       >
-        <Suspense fallback={null}> {/* Add Suspense with a fallback */}
           <ambientLight intensity={Math.PI} />
           <Physics gravity={gravity} timeStep={1 / 60}>
             <Band />
@@ -60,7 +59,6 @@ export default function Lanyard({ position = [0, 0, 18], gravity = [0, -40, 0], 
               scale={[100, 10, 1]}
             />
           </Environment>
-        </Suspense>
       </Canvas>
     </div>
   );
