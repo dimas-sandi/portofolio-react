@@ -1,18 +1,28 @@
 // src/components/About.jsx
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 // 1. Impor komponen Lanyard 3D Anda
 import Lanyard from './Lanyard'; // Impor dari folder Lanyard
 import { Mail, Linkedin, Instagram, PlayCircle, GitHub } from 'react-feather'; // Tambahkan GitHub
 import NormalTypingEffect from './NormalTypingEffect'; // Impor komponen NormalTypingEffect
 
 const About = ({ texts }) => {
+  const [showLanyard, setShowLanyard] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowLanyard(true);
+    }, 2000); // Delay for 2 seconds before showing Lanyard
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section id="about" className="section full-screen">
       <div className="section-content hero-layout">
         
         <div className="hero-image-container reveal animate-zoom-in delay-2">
-          <Lanyard />
+          {showLanyard && <Lanyard />}
         </div>
 
         <div className="hero-text-content">
