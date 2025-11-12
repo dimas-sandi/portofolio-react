@@ -167,7 +167,8 @@ Keluaran: Menghasilkan karya produk presisi tinggi sesuai dengan spesifikasi yan
     "formEmailLabel": "Email",
     "formMessageLabel": "Pesan",
     "formSubmitButton": "Kirim Pesan",
-    "formSuccessMessage": "Terima kasih atas pesan Anda! Saya akan segera menghubungi Anda."
+    "formSuccessMessage": "Terima kasih atas pesan Anda! Saya akan segera menghubungi Anda.",
+    "viewMoreProjects": "Lihat Lebih Banyak Project"
   },
   "en": {
     "navSkills": "Skills",
@@ -328,6 +329,7 @@ Keluaran: Menghasilkan karya produk presisi tinggi sesuai dengan spesifikasi yan
     "formEmailLabel": "Email",
     "formMessageLabel": "Message",
     "formSubmitButton": "Send Message",
-    "formSuccessMessage": "Thank you for your message! I will get back to you shortly."
+    "formSuccessMessage": "Thank you for your message! I will get back to you shortly.",
+    "viewMoreProjects": "View More Projects"
   }
 };

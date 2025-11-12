@@ -66,7 +66,7 @@ const Projects = ({ texts }) => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Lihat Lebih Banyak Project
+              {texts.viewMoreProjects}
             </Link>
           </motion.div>
         )}
