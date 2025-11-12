@@ -195,7 +195,7 @@ function AppContent() {
 
 
 function App() {
-  const basename = import.meta.env.VITE_NETLIFY_DEPLOY === 'true' ? '/' : '/portofolio-react';
+  const basename = import.meta.env.VITE_VERCEL_DEPLOY === 'true' ? '/' : '/portofolio-react';
   return (
     <Router basename={basename}>
       <AppContent />

@@ -5,9 +5,9 @@ import path from 'path'
 // https://vitejs.dev/config/
 
 export default defineConfig({
-  base: process.env.NETLIFY ? '/' : '/portofolio-react/',
+  base: process.env.VERCEL ? '/' : '/portofolio-react/',
   define: {
-    'import.meta.env.VITE_NETLIFY_DEPLOY': JSON.stringify(process.env.NETLIFY ? 'true' : 'false'),
+    'import.meta.env.VITE_VERCEL_DEPLOY': JSON.stringify(process.env.VERCEL ? 'true' : 'false'),
   },
   plugins: [react()],
   // HAPUS baris 'assetsInclude: ['**/*.glb'],' DARI SINI
