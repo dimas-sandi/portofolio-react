@@ -71,7 +71,7 @@ Keluaran: Menghasilkan karya produk presisi tinggi sesuai dengan spesifikasi yan
                   },
           {
             "url": "images/Dokumentasi/2lksn.jpg",
-            "desc": "Dokumentasi LKSN 2021 - Ini kondisi bengkel CNC SMKN2 tempat Aku mengerjakan soal lomba."
+            "desc": "Dokumentasi LKSN 2021 - Ini kondisi bengkel CNC SMKN 4 Palembang tempat Aku mengerjakan soal lomba."
           },
           {
             "url": "images/Dokumentasi/3lksn.jpg",

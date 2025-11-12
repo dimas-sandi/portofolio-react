@@ -160,7 +160,6 @@ function AchievementList({ texts, achievements }) {
                   ))}
                 </div>
               </div>
-              <div className="expand-icon"></div> {/* Added expand-icon */}
             </div>
             <div className={`achievement-detail-dropdown ${openAchievementId === item.id ? 'open' : ''}`}>
               <AchievementDetail item={item} />

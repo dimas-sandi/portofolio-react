@@ -1,151 +1,251 @@
-.achievement-list-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+/* src/components/Achievements.css */
+
+/* Animasi marquee (tetap sama) */
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-.achievement-menu-item {
-  background-color: var(--card-background);
-  border-radius: 10px;
-  padding: 15px 20px;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
+/* Section Utama (tetap sama) */
+.achievements-section {
+  padding: 8rem 0;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #e2e8f0;
   overflow: hidden;
+  position: relative;
+}
+.achievements-section .section-title,
+.achievements-section .section-description {
+  text-align: center; margin-left: auto; margin-right: auto;
+}
+.achievements-section .section-title {
+  font-size: 4rem; font-weight: 600; margin-bottom: 1.5rem; color: #fff;
+}
+.achievements-section .section-description {
+  font-size: 1.1rem; color: #94a3b8; max-width: 600px; margin-bottom: 4rem;
+}
+
+/* List Menu (tetap sama) */
+.achievement-list-menu {
+  max-width: 1000px; 
+  margin: 0 auto;
+  border-top: 1px solid #334155;
+}
+
+/* === PERUBAHAN DI SINI: Padding Lebih Kecil === */
+.achievement-menu-item {
+  position: relative; 
+  border-bottom: 1px solid #334155;
+  padding: 1.2rem 1rem; /* Reduced padding */
+  cursor: pointer;
+  overflow: hidden;
+  text-align: center;
+
+  /* === INI BAGIAN ANIMASI MASUK (BARU) === */
+  
+  /* 1. State Awal (Sembunyi dan sedikit di bawah) */
+  opacity: 0;
+  transform: translateY(30px);
+  
+  /* 2. Definisikan transisinya */
+  transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1), 
+              opacity 0.5s ease-out;
+  
+  /* 3. Default delay (akan kita timpa di bawah) */
+  transition-delay: 0s;
+}
+/* === INI BLOK BARU UNTUK MENGAKTIFKAN ANIMASI === */
+
+/* Saat section .reveal menjadi .active (dari App.jsx)... */
+.reveal.active .achievement-menu-item {
+  /* ...kembalikan ke state normal (terlihat) */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* * EFEK STAGGER (Penundaan Bertingkat)
+ * Ini adalah bagian "satisfying"-nya
+*/
+.reveal.active .achievement-menu-item:nth-child(1) {
+  transition-delay: 0.1s; /* Item 1 muncul 0.1 detik */
+}
+.reveal.active .achievement-menu-item:nth-child(2) {
+  transition-delay: 0.2s; /* Item 2 muncul 0.2 detik */
+}
+.reveal.active .achievement-menu-item:nth-child(3) {
+  transition-delay: 0.3s; /* Item 3 muncul 0.3 detik */
+}
+.reveal.active .achievement-menu-item:nth-child(4) {
+  transition-delay: 0.4s; /* Item 4 muncul 0.4 detik */
+}
+/* (Tambahkan :nth-child(5) dan seterusnya jika Anda menambah prestasi) */
+/* === (BARU!) Lapisan Wipe Putih (Pseudo-element) === */
+.achievement-menu-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 1; /* Di bawah teks, di atas bg item */
+  
+  /* Animasi scaleY (naik/turun) */
+  transform: scaleY(0);
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Tentukan Arah Transformasi */
+.achievement-menu-item.hover-from-top::before {
+  transform-origin: top;
+}
+.achievement-menu-item.hover-from-bottom::before {
+  transform-origin: bottom;
+}
+
+/* Picu Animasi saat 'is-hovered' (dari JS) */
+.achievement-menu-item.is-hovered::before {
+  transform: scaleY(1);
+}
+
+/* === (BARU!) Judul Asli (Sembunyikan saat hover) === */
+.menu-item-title {
+  font-size: 1.4rem; /* Reduced font size */
+  font-weight: 600;
+  color: #f1f5f9;
+  position: relative;
+  z-index: 2; /* Di atas lapisan putih */
+  user-select: none; 
+  
+  /* Transisi untuk opacity dan color */
+  transition: opacity 0.2s ease, color 0.4s ease;
+}
+
+/* Saat di-hover, ganti warna... */
+.achievement-menu-item.is-hovered .menu-item-title {
+  color: #1a202c; /* ...jadi gelap (agar terlihat saat wipe) */
+  opacity: 0; /* ...lalu menghilang */
+  transition-delay: 0s, 0.1s; /* Opacity delay sedikit */
+}
+
+@media (max-width: 768px) {
+  .menu-item-title {
+    font-size: 1.2rem; /* Smaller font size for mobile */
+  }
+}
+
+
+/* === (BARU!) Wrapper Marquee (Tampilkan saat hover) === */
+.marquee-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 2; /* Di atas lapisan putih */
+  
+  opacity: 0; /* Sembunyi by default */
+  /* Transisi untuk opacity, beri delay agar muncul SETELAH judul hilang */
+  transition: opacity 0.3s ease 0.1s; 
 }
 
-.achievement-menu-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+/* Saat di-hover, tampilkan... */
+.achievement-menu-item.is-hovered .marquee-wrapper {
+  opacity: 1;
 }
 
-.achievement-menu-item.active {
-  background-color: var(--card-background-active);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-  border-color: var(--primary-color);
+/* ...dan jalankan animasinya */
+.achievement-menu-item.is-hovered .marquee-content {
+  animation-play-state: running;
 }
 
-.menu-item-title {
-  font-size: 1.2em;
-  font-weight: bold;
-  color: var(--text-color);
-  flex-grow: 1;
-  margin-right: 10px;
-}
 
-.marquee-wrapper {
-  flex-shrink: 0;
-  width: 150px; /* Adjust width as needed */
-  height: 30px; /* Adjust height as needed */
-  overflow: hidden;
-  position: relative;
-  margin-left: auto; /* Push to the right */
-}
+/* ... (Gaya Marquee & Halaman Detail tetap sama) ... */
 
 .marquee-content {
   display: flex;
-  width: max-content;
-  animation: scroll-left 15s linear infinite; /* Use scroll-left from style.css */
+  width: 200%;
+  animation: scroll-left 15s linear infinite;
+  animation-play-state: paused;
+  will-change: transform;
+  justify-content: space-around; /* <-- TAMBAHKAN INI (INTINYA) */
+  align-items: center;         /* <-- TAMBAHKAN INI (Meratakan) */
 }
-
 .marquee-block {
   display: flex;
   align-items: center;
-  padding: 0 15px;
-  flex-shrink: 0;
+  flex-shrink: 0; 
+  padding: 0 1rem; /* Reduced padding */
+  /* HAPUS 'width: 50%' */
+  /* HAPUS 'justify-content: center' */
 }
 
+/* INI PENGGANTINYA */
 .marquee-thumb {
-  height: 20px; /* Adjust size as needed */
-  width: auto;
-  margin-right: 8px;
+  width: 120px; /* Reduced width */
+  height: 40px; /* Reduced height */
+  border-radius: 8px;
+  margin-right: 1rem; /* Reduced margin */
+  object-fit: cover;
+  flex-shrink: 0; /* <-- TAMBAHKAN INI */
 }
-
 .marquee-text {
-  font-size: 0.9em;
-  color: var(--text-color-light);
-  white-space: nowrap;
+  font-size: 1.2rem; /* Reduced font size */
+  font-weight: 600;
+  color: #1a202c;
+  text-transform: uppercase;
+  line-height: 1; /* <-- TAMBAHKAN INI */
 }
 
+/* Gaya untuk detail dropdown */
 .achievement-detail-dropdown {
   max-height: 0;
+  opacity: 0;
   overflow: hidden;
-  transition: max-height 0.5s ease-out, padding 0.5s ease-out;
-  background-color: var(--card-background-light);
-  border-radius: 0 0 10px 10px;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
-  padding: 0 20px; /* Initial padding 0 */
+  transition: max-height 0.7s ease-out, opacity 0.7s ease-out;
+  padding: 0 1.5rem; /* Sesuaikan padding agar tidak terlalu mepet */
 }
 
 .achievement-detail-dropdown.open {
-  max-height: 1000px; /* Cukup besar untuk menampung konten */
-  padding: 20px;
+  max-height: 3000px; /* Cukup besar untuk menampung konten */
+  opacity: 1;
+  padding-top: 1.5rem; /* Beri jarak dari item menu di atasnya */
+  padding-bottom: 1.5rem;
 }
 
-.achievement-detail {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.detail-title {
-  font-size: 1.5em;
-  font-weight: bold;
-  color: var(--primary-color);
-  margin-bottom: 5px;
-}
-
-.detail-source {
-  font-size: 0.9em;
-  color: var(--text-color-light);
-  display: block;
-  margin-bottom: 15px;
-}
-
-.detail-description p {
-  font-size: 1em;
-  line-height: 1.6;
-  color: var(--text-color);
-  margin-bottom: 10px;
-}
-
-.detail-gallery {
-  margin-top: 20px;
-}
-
-.detail-gallery h3 {
-  font-size: 1.2em;
-  font-weight: bold;
-  color: var(--primary-color);
-  margin-bottom: 10px;
-}
-
+/* Halaman Detail (Tidak berubah) */
+.achievement-detail { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+.back-button { background: #334155; color: #e2e8f0; border: none; padding: 0.75rem 1.5rem; font-size: 1rem; font-weight: 500; border-radius: 6px; cursor: pointer; transition: all 0.3s ease; margin-bottom: 2rem; }
+.back-button:hover { background: #475569; color: #fff; }
+.detail-title { font-size: 2.8rem; font-weight: 600; margin-bottom: 0.5rem; color: #fff; }
+.detail-source { display: block; font-size: 1.1rem; color: #60a5fa; font-weight: 500; margin-bottom: 2rem; }
+.detail-description p { font-size: 1.1rem; line-height: 1.7; color: #cbd5e1; margin-bottom: 1.5rem; }
+.detail-gallery { margin-top: 3rem; }
+.detail-gallery h3 { font-size: 1.8rem; font-weight: 600; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; margin-bottom: 1.5rem; color: #fff; }
+/* (BARU) Grid untuk menampung kartu */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem; /* Jarak antar kartu */
 }
 
-/* Tilted Card Styles */
+/* (BARU) Kartu 3D */
 .tilted-card {
   position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden; /* Penting agar glare & overlay terpotong rapi */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  
+  /* Transisi untuk 'reset' saat mouse leave */
+  transition: transform 0.3s ease-out;
+  
+  /* Ini adalah 'ruang' 3D untuk kartu */
   transform-style: preserve-3d;
-  perspective: 1000px;
-  background-color: #1a1a1a; /* Fallback */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  --mouse-x: 50%; /* Default for glare */
-  --mouse-y: 50%; /* Default for glare */
+  will-change: transform;
 }
 
 .tilted-card-image {
@@ -153,165 +253,102 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.3s ease;
 }
 
-.tilted-card-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
-  color: white;
-  padding: 10px;
-  transform: translateY(100%);
-  transition: transform 0.3s ease;
-  font-size: 0.9em;
-  text-align: center;
-}
-
-.tilted-card:hover .tilted-card-overlay {
-  transform: translateY(0);
-}
-
+/* (BARU) Efek Glare (Kilatan) */
 .tilted-card-glare {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  border-radius: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+  
+  /* Posisi glare akan dikontrol oleh JS via --mouse-x/y */
   background: radial-gradient(
     circle at var(--mouse-x) var(--mouse-y),
-    rgba(255, 255, 255, 0.2),
-    transparent 70%
+    rgba(255, 255, 255, 0.3), /* Titik terang */
+    rgba(255, 255, 255, 0) 60% /* Menghilang */
   );
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  z-index: 2;
 }
 
+/* (BARU) Overlay Deskripsi */
+.tilted-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  color: #fff;
+  z-index: 3;
+  
+  /* Sembunyikan by default */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.tilted-card-overlay p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* (BARU) Efek saat di-hover */
 .tilted-card:hover .tilted-card-glare {
   opacity: 1;
 }
-
-/* Responsive adjustments for smaller screens */
-@media (max-width: 768px) {
-  .achievement-menu-item {
-    padding: 10px 15px;
-  }
-
-  .menu-item-title {
-    font-size: 1em;
-  }
-
-  .marquee-wrapper {
-    width: 100px;
-    height: 25px;
-  }
-
-  .marquee-thumb {
-    height: 18px;
-  }
-
-  .marquee-text {
-    font-size: 0.8em;
-  }
-
-  .achievement-detail-dropdown.open {
-    padding: 15px;
-  }
-
-  .detail-title {
-    font-size: 1.3em;
-  }
-
-  .detail-source {
-    font-size: 0.8em;
-  }
-
-  .detail-description p {
-    font-size: 0.9em;
-  }
-
-  .detail-gallery h3 {
-    font-size: 1.1em;
-  }
-
-  .gallery-grid {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  }
+.tilted-card:hover .tilted-card-overlay {
+  opacity: 1;
+  transform: translateY(0);
 }
 
+/* Responsive adjustments for Achievements.css */
 @media (max-width: 480px) {
+  .achievements-section .section-title {
+    font-size: 2.5rem; /* Already set in style.css, but good to be explicit */
+  }
+  .achievements-section .section-description {
+    font-size: 0.rem; /* Already set in style.css, but good to be explicit */
+  }
   .menu-item-title {
-    font-size: 0.9em;
+    font-size: 1rem; /* Further reduced */
   }
-
-  .marquee-wrapper {
-    width: 80px;
-    height: 20px;
-  }
-
-  .marquee-thumb {
-    height: 15px;
-  }
-
   .marquee-text {
-    font-size: 0.7em;
+    font-size: 0.9rem; /* Reduced */
   }
-
+  .marquee-thumb {
+    width: 80px; /* Reduced size for smaller screens */
+    height: 30px;
+    margin-right: 0.5rem;
+  }
   .detail-title {
-    font-size: 1.1em;
+    font-size: 1.8rem; /* Reduced */
   }
-
   .detail-source {
-    font-size: 0.7em;
+    font-size: 0.9rem; /* Reduced */
   }
-
   .detail-description p {
-    font-size: 0.8em;
+    font-size: 0.9rem; /* Reduced */
   }
-
   .detail-gallery h3 {
-    font-size: 1em;
+    font-size: 1.2rem; /* Reduced */
   }
-
+  .tilted-card-overlay p {
+    font-size: 0.75rem; /* Reduced */
+  }
+  .achievement-detail-dropdown {
+    padding: 0 0.5rem; /* Adjust padding */
+  }
+  .achievement-detail {
+    padding: 1rem 0.5rem; /* Adjust padding */
+  }
   .gallery-grid {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust grid for smaller cards */
+    gap: 1rem;
   }
-}
-
-/* Expand Icon Styles */
-.expand-icon {
-  position: absolute;
-  right: 20px; /* Adjust as needed */
-  top: 50%;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease;
-}
-
-.expand-icon::before,
-.expand-icon::after {
-  content: '';
-  position: absolute;
-  background-color: var(--text-color); /* Or any color you prefer */
-  transition: transform 0.3s ease;
-}
-
-.expand-icon::before {
-  width: 100%;
-  height: 2px;
-}
-
-.expand-icon::after {
-  width: 2px;
-  height: 100%;
-}
-
-.achievement-menu-item.active .expand-icon {
-  transform: translateY(-50%) rotate(45deg); /* Rotate to form an 'X' or '-' */
 }
