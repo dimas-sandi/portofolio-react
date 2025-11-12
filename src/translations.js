@@ -57,7 +57,7 @@ export const translations = {
         "thumbnailImage": "images/thblksn.svg",
         "details": `
           Aku Menerima Medallion of Excellence (harapan 3) di LKS tingkat Nasional 2021.
-          LKS Nasional 2021 untuk CNC Milling adalah ajang talenta siswa SMK tingkat nasional yang diselenggarakan oleh Kemendikbud untuk menguji kemampuan pemrograman, penyetelan, dan proses pemesinan dengan mesin CNC Milling, dengan salah satu alumni SMK Wisudha Karya Kudus berhasil meraih medali emas. 
+          LKS Nasional 2021 untuk CNC Milling adalah ajang talenta siswa SMK tingkat nasional yang diselenggarakan oleh Kemendikbud untuk menguji kemampuan pemrograman, penyetelan, dan proses pemesinan dengan mesin CNC Milling. 
 Detail LKS Nasional 2021 Bidang CNC Milling:
 Tujuan: Mengukur dan menguji kompetensi siswa dalam menggunakan mesin CNC Milling untuk membentuk logam dan material padat lainnya.
 Format Lomba: Menguji aspek mental, dasar permesinan, teknik pemrograman, penyetelan mesin, proses pemesinan, dan pengendalian kualitas.
@@ -224,7 +224,7 @@ Keluaran: Menghasilkan karya produk presisi tinggi sesuai dengan spesifikasi yan
         "thumbnailImage": "images/thblksn.svg",
         "details": `
           I received the Medallion of Excellence (3rd place) at the 2021 National LKS.
-          The 2021 National LKS for CNC Milling is a national-level talent event for vocational high school students organized by the Ministry of Education and Culture to test programming, setup, and machining skills using CNC Milling machines. An alumnus of SMK Wisudha Karya Kudus successfully won a gold medal.
+          The 2021 National LKS for CNC Milling is a national-level talent event for vocational high school students organized by the Ministry of Education and Culture to test programming, setup, and machining skills using CNC Milling machines.
           Details of the 2021 National LKS for CNC Milling:
           Objective: To measure and test students' competency in using CNC Milling machines to shape metal and other solid materials.
           Competition Format: Tests mental aspects, machining fundamentals, programming techniques, machine setup, machining processes, and quality control.
